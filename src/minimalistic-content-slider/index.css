@@ -20,13 +20,12 @@ body {
   left: 0;
   height: 100svh;
   width: 20vw;
-  background-color: blue;
   overflow: hidden;
 }
 
 .small-slides {
   position: absolute;
-  height: max-content;
+  height: 100svh;
   width: max-content;
   display: flex;
   will-change: transform;
@@ -34,6 +33,26 @@ body {
 
 .small-slides .img {
   flex: 0 0 20vw;
+}
+.big-slider {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  height: 100svh;
+  width: 50vw;
+  overflow: hidden;
+}
+
+.big-slides {
+  position: absolute;
+  height: 100svh;
+  width: max-content;
+  display: flex;
+  will-change: transform;
+}
+
+.big-slides .img {
+  flex: 0 0 50vw;
 }
 
 img {
@@ -67,7 +86,7 @@ h1 {
   font-size: 6rem;
   color: #fff;
   line-height: 1;
-  padding: 0 0 0 4em;
+  padding: 0 0 0 2em;
 }
 
 .control__button {
