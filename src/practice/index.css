@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+.slider {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.slide-text {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100vw;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  font-size: 2rem;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.buttons {
+  margin-top: 20px;
+}

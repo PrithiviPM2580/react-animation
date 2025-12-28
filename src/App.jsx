@@ -1,5 +1,7 @@
+import Slider from "./minimalistic-content-slider/Slider";
+
 const App = () => {
-  return <div>App</div>;
+  return <Slider />;
 };
 
 export default App;

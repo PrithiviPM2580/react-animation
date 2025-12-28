@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #161616;
+  font-family: "DM Serif Display", serif;
+}
+
+.text-slider {
+  position: relative;
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.text-slides {
+  position: absolute;
+  height: max-content;
+  width: max-content;
+  top: 50%;
+  display: flex;
+  will-change: transform;
+  transform: translateY(-50%);
+}
+
+.text-slides .text-slide {
+  flex: 0 0 100vw;
+}
+
+h1 {
+  font-size: 6rem;
+  color: #fff;
+  line-height: 1;
+  padding: 0 0 0 4em;
+}
+
+.control__button {
+  position: fixed;
+  top: 80%;
+  left: 5%;
+  display: flex;
+  gap: 2em;
+}
+
+.control__button button {
+  height: 80px;
+  width: 80px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 50%;
+}
