@@ -12,6 +12,34 @@ body {
   width: 100%;
   background-color: #161616;
   font-family: "DM Serif Display", serif;
+  overflow: hidden;
+}
+.small-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100svh;
+  width: 20vw;
+  background-color: blue;
+  overflow: hidden;
+}
+
+.small-slides {
+  position: absolute;
+  height: max-content;
+  width: max-content;
+  display: flex;
+  will-change: transform;
+}
+
+.small-slides .img {
+  flex: 0 0 20vw;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .text-slider {
@@ -25,7 +53,7 @@ body {
   position: absolute;
   height: max-content;
   width: max-content;
-  top: 50%;
+  top: 60%;
   display: flex;
   will-change: transform;
   transform: translateY(-50%);

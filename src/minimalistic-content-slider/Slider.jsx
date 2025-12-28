@@ -20,7 +20,7 @@ const Slider = () => {
   useGSAP(() => {
     gsap.to(slidesRef.current, {
       x: -100 * currentIndex + "vw",
-      duration: 0.25,
+      duration: 0.5,
       ease: "power1.out",
       overwrite: "auto",
     });
@@ -28,6 +28,18 @@ const Slider = () => {
 
   return (
     <>
+      <div className="small-slider">
+        <div className="small-slides" ref={slidesRef}>
+          {Array.from({ length: totalSlides }).map((_, index) => (
+            <div className="img" key={index}>
+              <img
+                src={`./images/img${index + 1}.webp`}
+                alt={`Image ${index + 1}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="text-slider">
         <div className="text-slides" ref={slidesRef}>
           {sentences.map((sentence, index) => (
