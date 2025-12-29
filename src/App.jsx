@@ -1,7 +1,7 @@
-import Slider from "./minimalistic-content-slider/Slider";
+import MouseMove from "./mousemove-image/MouseMove";
 
 const App = () => {
-  return <Slider />;
+  return <MouseMove />;
 };
 
 export default App;
