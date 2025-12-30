@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #161616;
+  padding: 0 120px;
+}
+
+.content {
+  width: 70%;
+  margin: 200px auto;
+}
+
+h1 {
+  font-size: 60px;
+  color: #fff;
+  letter-spacing: 0.1em;
+  padding: 0.8em 0;
+  margin: 1.2em 0 0.8em 0;
+}
+
+p {
+  font-size: 40px;
+  color: #fff;
+  letter-spacing: 0.1em;
+  padding: 0.4em 0;
+  margin: 1.2em 0 0.8em 0;
+}
+
+.text {
+  position: relative;
+  color: transparent;
+  display: inline-block;
+  overflow: hidden;
+  transition: color 0.8s;
+}
+
+.text::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text.reveal {
+  color: #fff;
+  animation: revealTextAnimation 0.64s ease forwards;
+}
+
+.text.reveal::before {
+  background-color: #6c2e13;
+  animation: blockRevealAnimation 0.64s ease forwards;
+}
+.img {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.img img {
+  max-width: 100%;
+  opacity: 0;
+}
+
+.img::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.img.reveal::before {
+  background-color: #544c26;
+  animation: blockRevealAnimation 0.64s ease forwards;
+}
+
+.img.reveal img {
+  animation: imageRevealAnimation 0.64s ease forwards;
+}
+
+@keyframes blockRevealAnimation {
+  0% {
+    left: -100%;
+  }
+  40% {
+    left: 0%;
+  }
+  60% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes revealTextAnimation {
+  0% {
+    color: transparent;
+  }
+  40% {
+    color: transparent;
+  }
+  60% {
+    color: #fff;
+  }
+}
+
+@keyframes imageRevealAnimation {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="smooth-scroll-wrapper">
+      <div class="content">
+        <div class="container">
+          <h1 class="text">Innovation</h1>
+          <div class="img"><img src="../images/img1.webp" alt="" /></div>
+          <p class="text">Transforming ideas into reality through cutting-edge technology and creative solutions.</p>
+        </div>
+        <div class="container">
+          <h1 class="text">Design</h1>
+          <div class="img"><img src="../images/img2.webp" alt="" /></div>
+          <p class="text">Creating beautiful and intuitive user experiences that inspire and engage.</p>
+        </div>
+        <div class="container">
+          <h1 class="text">Development</h1>
+          <div class="img"><img src="../images/img3.webp" alt="" /></div>
+          <p class="text">Building robust and scalable applications with clean, maintainable code.</p>
+        </div>
+        <div class="container">
+          <h1 class="text">Strategy</h1>
+          <div class="img"><img src="../images/img4.webp" alt="" /></div>
+          <p class="text">Planning and executing comprehensive approaches to achieve business goals.</p>
+        </div>
+        <div class="container">
+          <h1 class="text">Growth</h1>
+          <div class="img"><img src="../images/img5.webp" alt="" /></div>
+          <p class="text">Scaling businesses through data-driven insights and continuous improvement.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".img, .text");
+
+  const observer = new IntersectionObserver(
+    (enteries) => {
+      enteries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+          console.log("It Reveals");
+        } else {
+          entry.target.classList.remove("reveal");
+          console.log("It Hides");
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    }
+  );
+  
+  elements.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

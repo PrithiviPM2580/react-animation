@@ -1,7 +1,7 @@
-import MouseMove from "./mousemove-image/MouseMove";
+import BlockRevealOnScroll from "./block-reveal-effect-on-scroll/BlockRevealOnScroll";
 
 const App = () => {
-  return <MouseMove />;
+  return <BlockRevealOnScroll />;
 };
 
 export default App;
