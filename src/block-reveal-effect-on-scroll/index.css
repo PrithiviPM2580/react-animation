@@ -125,3 +125,27 @@ p {
     opacity: 1;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    background-color: blue;
+  }
+  .content {
+    width: 100%;
+    margin: 20px 0px;
+    background-color: red;
+  }
+  h1 {
+    font-size: 30px;
+    padding: 0.1em 0;
+    margin: 0.2em 0 0.1em 0;
+  }
+  p {
+    font-size: 16px;
+    padding: 0.1em 0;
+    margin: 0.2em 0 0.1em 0;
+  }
+}

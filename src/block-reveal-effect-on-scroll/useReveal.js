@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const useReveal = (threshold = 0.3) => {
   const revealRef = useRef(null);
-  const [revel, setReveal] = useState("reveal");
+  let revel;
 
   useEffect(() => {
     const elements = revealRef.current;
