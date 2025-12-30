@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const useReveal = (threshold = 0.3) => {
   const revealRef = useRef(null);
-  const [revel, setReveal] = useState(false);
+  const [revel, setReveal] = useState("reveal");
 
   useEffect(() => {
     const elements = revealRef.current;
@@ -12,9 +12,9 @@ const useReveal = (threshold = 0.3) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setReveal(true);
+            entry.target.classList.add("reveal");
           } else {
-            setReveal(false);
+            entry.target.classList.remove("reveal");
           }
         });
       },
