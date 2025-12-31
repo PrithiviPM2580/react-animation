@@ -53,3 +53,38 @@ export const scrollSkew = [
     desc: "Pushing boundaries with innovative and artistic vision that inspires change. We combine creative thinking with technical expertise to deliver extraordinary results. Every project is an opportunity to create something remarkable and impactful. Experience excellence that goes beyond expectations. Our passion for creativity drives us to explore new ideas and challenge the status quo.",
   },
 ];
+
+export const hoverRevealImages = [
+  {
+    dataImg: "../images/img1.webp",
+    tag: 1,
+  },
+  {
+    dataImg: "../images/img2.webp",
+    tag: 2,
+  },
+  {
+    dataImg: "../images/img3.webp",
+    tag: 3,
+  },
+  {
+    dataImg: "../images/img4.webp",
+    tag: 4,
+  },
+  {
+    dataImg: "../images/img5.webp",
+    tag: 5,
+  },
+  {
+    dataImg: "../images/img6.webp",
+    tag: 6,
+  },
+  {
+    dataImg: "../images/img1.webp",
+    tag: 7,
+  },
+  {
+    dataImg: "../images/img2.webp",
+    tag: 8,
+  },
+];

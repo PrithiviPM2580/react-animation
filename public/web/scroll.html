@@ -14,184 +14,198 @@
 
       html,
       body {
-        height: 100svh;
+        height: 100%;
         width: 100%;
-        background-color: #fff;
+        background-color: #c6c6c6;
         overflow: hidden;
       }
 
-      /* .container{
-    height: 100svh;
-    width: 100%;
-} */
+      .container {
+        width: 100%;
+        height: 100svh;
+        overflow: hidden;
+      }
 
       .navs {
         width: 100%;
-        padding: 1.5em 3em;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        opacity: 1;
+        padding: 1.2em 3em;
       }
-      .navs .nav {
+      .navs .link {
+        display: flex;
+        gap: 2em;
+      }
+      .navs h1 {
         font-size: 1rem;
-        font-weight: 600;
-        color: #333;
       }
 
-      .img-wrapper {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 0);
-        width: 30%;
-        height: 90svh;
-        overflow: hidden;
-      }
-      .img {
-        width: 100%;
-        height: 100%;
-      }
-      .box {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #fff;
-        z-index: 2;
-        opacity: 1;
+      .details {
+        margin-top: 10em;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        padding-inline: 3em;
       }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .header {
-        position: absolute;
-        top: 60%;
-        left: 30%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-      }
-      .header h1 {
-        font-size: 3rem;
-        line-height: 1.5em;
-        font-weight: bold;
+      .details .details-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
       }
 
       .wrapper {
-        position: fixed;
-        height: 100svh;
+        position: absolute;
+        bottom: 0;
+        left: 0;
         width: 100%;
-        background-color: #000;
-        z-index: 5;
+        height: 400px;
       }
-      .loader {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) translateY(80px) scaleY(0);
+      .wrapper .text {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .text .text-img {
+        position: relative;
+        flex-grow: 1;
+        font-size: 220px;
+        font-weight: 700;
+        line-height: 1;
+        transition: all 300ms ease-in-out;
         transform-origin: 50% 100%;
-        width: 8%;
-        height: 20vh;
-        z-index: 5;
-        background-color: #fff;
-        opacity: 0; /* hide until GSAP drives it */
+      }
+
+      .text .text-img:hover {
+        flex-grow: 2;
+        transform: scale(1.36);
+      }
+      .img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 450px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: scale(0.8);
       }
     </style>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="loader"></div>
-    </div>
-
     <div class="container">
       <div class="navs">
-        <div class="nav-1 nav">Home</div>
-        <div class="nav-2 nav">Logo</div>
-        <div class="nav-3 nav">&equiv;</div>
+        <h1 class="logo">Logo</h1>
+        <h1 class="name">Prithivi</h1>
+        <div class="link">
+          <h1>Home</h1>
+          <h1>Contact</h1>
+          <h1>Shop</h1>
+        </div>
       </div>
 
-      <div class="img-wrapper">
-        <div class="box"></div>
-        <div class="img"><img src="../images/img5.webp" alt="" /></div>
+      <div class="details">
+        <div class="details-text">
+          <h2>Eleveted <br />Details</h2>
+          <p>View Showreel</p>
+        </div>
+        <h1>/All Projects</h1>
       </div>
 
-      <div class="header">
-        <h1>Paul Panday</h1>
-        <h1>Roman Reign</h1>
+      <div class="wrapper">
+        <div class="img"><img src="" alt="" /></div>
+        <div class="text">
+          <div class="text-img" data-img="../images/img1.webp">
+            <h1>1</h1>
+          </div>
+          <div class="text-img" data-img="../images/img2.webp">
+            <h1>2</h1>
+          </div>
+          <div class="text-img" data-img="../images/img3.webp">
+            <h1>3</h1>
+          </div>
+          <div class="text-img" data-img="../images/img4.webp">
+            <h1>4</h1>
+          </div>
+          <div class="text-img" data-img="../images/img5.webp">
+            <h1>5</h1>
+          </div>
+          <div class="text-img" data-img="../images/img6.webp">
+            <h1>6</h1>
+          </div>
+          <div class="text-img" data-img="../images/img1.webp">
+            <h1>7</h1>
+          </div>
+          <div class="text-img" data-img="../images/img2.webp">
+            <h1>8</h1>
+          </div>
+        </div>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="./script.js">
-            document.addEventListener("DOMContentLoaded", function () {
-        const loader = document.querySelector(".loader");
+            document.addEventListener("DOMContentLoaded", () => {
+        const textImages = gsap.utils.toArray(".text-img");
         const wrapper = document.querySelector(".wrapper");
+        const imgElement = document.querySelector(".img");
+        const imgContainer = document.querySelector(".img img");
 
-        // Set initial state of loader to prevent flicker
-        gsap.set(loader, {
-          y: 80,
-          scaleY: 0,
-          transformOrigin: "50% 100%",
+        // create quickTo ONCE
+        const moveX = gsap.quickTo(imgElement, "x", {
+          duration: 0.4,
+          ease: "power3.out",
         });
 
-        const tl = gsap.timeline();
+        const moveY = gsap.quickTo(imgElement, "y", {
+          duration: 0.4,
+          ease: "power3.out",
+        });
 
-        tl.to(loader, {
-          duration: 0.5,
-          y: 0,
-          scaleY: 1,
-          opacity: 1,
-          ease: "power1.inOut",
-          delay: 0.5,
-        })
-          .to(loader, {
-            duration: 0.5,
-            y: -80,
-            scaleY: "0",
-            ease: "power1.inOut",
-            transformOrigin: "50% -100%",
-            opacity: 1,
-          })
-          .to(wrapper, {
-            duration: 0.6,
-            top: "-100%",
-            ease: "power1.inOut",
-            delay: 0.2,
-          })
-          .from(
-            "h1",
-            {
-              duration: 1,
-              y: 50,
+        textImages.forEach((img) => {
+          img.addEventListener("mouseenter", hoverImage);
+          img.addEventListener("mouseleave", hoverImage);
+          img.addEventListener("mousemove", moveImage);
+        });
+
+        function hoverImage(e) {
+          const imgSrc = e.currentTarget.getAttribute("data-img");
+          imgContainer.src = imgSrc;
+
+          if (e.type === "mouseenter") {
+            gsap.to(imgContainer, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              ease: "power3.out",
+            });
+          } else {
+            gsap.to(imgContainer, {
               opacity: 0,
-              ease: "power1.out",
-            },
-            "-=0.3"
-          )
-          .to(
-            ".box",
-            {
-              duration: 1,
-              y: "-100%",
-              ease: "power1.out",
-            },
-            "<"
-          )
-          .from(
-            ".navs",
-            {
-              duration: 1,
-              y: 50,
-              ease: "power1.out",
-              opacity: 0,
-            },
-            "<"
-          );
+              scale: 0.8,
+              duration: 0.4,
+              ease: "power3.out",
+            });
+          }
+        }
+
+        function moveImage(e) {
+          const bounds = wrapper.getBoundingClientRect();
+          const offsetX = imgElement.offsetWidth / 2;
+          const offsetY = imgElement.offsetHeight / 2;
+
+          moveX(e.clientX - bounds.left - offsetX);
+          moveY(e.clientY - bounds.top - offsetY);
+        }
       });
     </script>
   </body>

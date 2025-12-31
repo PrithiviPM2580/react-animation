@@ -1,7 +1,7 @@
-import LoaderImageTextReveal from "./loader-image-text-reveal/LoaderImageTextReveal";
+import HoverRevealImage from "./hover-reveal-image/HoverRevealImage";
 
 const App = () => {
-  return <LoaderImageTextReveal />;
+  return <HoverRevealImage />;
 };
 
 export default App;
