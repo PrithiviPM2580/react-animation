@@ -1,42 +1,36 @@
-import { useState } from "react";
-import "./index.css";
+import React, { useState, useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
-const sentences = [
-  "Code<br />and create daily",
-  "Pixels<br />move with purpose",
-  "Animate<br />your bright ideas",
-  "Click<br />scroll explore web",
-  "Web<br />magic comes alive",
-];
+function Practice() {
+  const [count, setCount] = useState(1);
+  const boxRef = useRef(null);
 
-export default function Practice() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const total = sentences.length;
-
-  const nextSlide = () => {
-    setCurrentIndex((currentIndex + 1) % total);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((currentIndex - 1 + total) % total);
-  };
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        boxRef.current,
+        { x: 0 }, // start from
+        { x: count * 50, duration: 0.5 } // animate to
+      );
+    },
+    { dependencies: [count], revertOnUpdate: false }
+  );
 
   return (
-    <div className="slider">
-      <div className="slide-text">
-        {sentences.map((sentence, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentIndex ? "active" : ""}`}
-            dangerouslySetInnerHTML={{ __html: sentence }}
-          />
-        ))}
-      </div>
-
-      <div className="buttons">
-        <button onClick={prevSlide}>Prev</button>
-        <button onClick={nextSlide}>Next</button>
-      </div>
+    <div style={{ padding: "50px" }}>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+      <div
+        ref={boxRef}
+        style={{
+          width: 50,
+          height: 50,
+          background: "red",
+          marginTop: 20,
+        }}
+      />
     </div>
   );
 }
+
+export default Practice;

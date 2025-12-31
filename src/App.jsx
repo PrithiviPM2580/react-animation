@@ -1,6 +1,7 @@
-import SkewScroll from "./skew-sroll/SkewScroll";
+import LoaderImageTextReveal from "./loader-image-text-reveal/LoaderImageTextReveal";
+
 const App = () => {
-  return <SkewScroll />;
+  return <LoaderImageTextReveal />;
 };
 
 export default App;
