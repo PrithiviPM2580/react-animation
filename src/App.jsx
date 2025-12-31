@@ -1,7 +1,7 @@
-import HoverRevealImage from "./hover-reveal-image/HoverRevealImage";
+import RevealSidePage from "./reveal-side-page/RevealSidePage";
 
 const App = () => {
-  return <HoverRevealImage />;
+  return <RevealSidePage />;
 };
 
 export default App;
