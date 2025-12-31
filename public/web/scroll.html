@@ -5,191 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.2.3/dist/lenis.css"
+    />
     <style>
       * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  background-color: #161616;
-  padding: 0 120px;
-}
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        background-color: #161616;
+      }
 
-.content {
-  width: 70%;
-  margin: 200px auto;
-}
+      h1 {
+        font-size: 6rem;
+        color: #fff;
+        font-family: serif;
+        font-weight: 700;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #ccc;
+        font-family: sans-serif;
+        line-height: 1.6;
+        letter-spacing: 0.1em;
+      }
 
-h1 {
-  font-size: 60px;
-  color: #fff;
-  letter-spacing: 0.1em;
-  padding: 0.8em 0;
-  margin: 1.2em 0 0.8em 0;
-}
+      .scroll-wrapper {
+        min-height: 100svh;
+        width: 100%;
+        padding: 150px 0;
+      }
 
-p {
-  font-size: 40px;
-  color: #fff;
-  letter-spacing: 0.1em;
-  padding: 0.4em 0;
-  margin: 1.2em 0 0.8em 0;
-}
+      .container {
+        width: 60%;
+        margin: 0 auto;
+        overflow: hidden;
+        transition: transform 0.3s;
+        will-change: transform;
+      }
 
-.text {
-  position: relative;
-  color: transparent;
-  display: inline-block;
-  overflow: hidden;
-  transition: color 0.8s;
-}
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        margin-bottom: 140px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-.text::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.text.reveal {
-  color: #fff;
-  animation: revealTextAnimation 0.64s ease forwards;
-}
-
-.text.reveal::before {
-  background-color: #6c2e13;
-  animation: blockRevealAnimation 0.64s ease forwards;
-}
-.img {
-  position: relative;
-  display: block;
-  overflow: hidden;
-}
-
-.img img {
-  max-width: 100%;
-  opacity: 0;
-}
-
-.img::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-.img.reveal::before {
-  background-color: #544c26;
-  animation: blockRevealAnimation 0.64s ease forwards;
-}
-
-.img.reveal img {
-  animation: imageRevealAnimation 0.64s ease forwards;
-}
-
-@keyframes blockRevealAnimation {
-  0% {
-    left: -100%;
-  }
-  40% {
-    left: 0%;
-  }
-  60% {
-    left: 0%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-@keyframes revealTextAnimation {
-  0% {
-    color: transparent;
-  }
-  40% {
-    color: transparent;
-  }
-  60% {
-    color: #fff;
-  }
-}
-
-@keyframes imageRevealAnimation {
-  0% {
-    opacity: 0;
-  }
-  60% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+      @media (max-width: 768px) {
+        .scroll-wrapper {
+          padding: 100px 0;
+        }
+        .container {
+          width: 90%;
+        }
+        .content {
+          gap: 0.8em;
+          margin-bottom: 50px;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 0.7rem;
+          letter-spacing: 0;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="smooth-scroll-wrapper">
-      <div class="content">
-        <div class="container">
-          <h1 class="text">Innovation</h1>
-          <div class="img"><img src="../images/img1.webp" alt="" /></div>
-          <p class="text">Transforming ideas into reality through cutting-edge technology and creative solutions.</p>
+    <div class="scroll-wrapper">
+      <div class="container">
+        <div class="content">
+          <img src="../images/img1.webp" alt="" />
+          <h1>Digital Innovation</h1>
+          <p>
+            Transforming ideas into cutting-edge digital solutions that drive
+            business growth. We leverage the latest technologies to create
+            innovative platforms that solve complex problems. Our team combines
+            expertise with creativity to deliver exceptional results. Partner
+            with us to revolutionize your digital presence. We believe in
+            continuous improvement and adapting to the ever-changing digital
+            landscape.
+          </p>
         </div>
-        <div class="container">
-          <h1 class="text">Design</h1>
-          <div class="img"><img src="../images/img2.webp" alt="" /></div>
-          <p class="text">Creating beautiful and intuitive user experiences that inspire and engage.</p>
+        <div class="content">
+          <img src="../images/img2.webp" alt="" />
+          <h1>Creative Design</h1>
+          <p>
+            Crafting visually stunning experiences that captivate and engage
+            your audience. Every design element is carefully considered to
+            reflect your brand's unique identity. We blend aesthetics with
+            functionality to create memorable digital interactions. Transform
+            your vision into beautiful, user-centric designs that stand out. Our
+            designs not only attract attention but also foster lasting
+            connections with your audience.
+          </p>
         </div>
-        <div class="container">
-          <h1 class="text">Development</h1>
-          <div class="img"><img src="../images/img3.webp" alt="" /></div>
-          <p class="text">Building robust and scalable applications with clean, maintainable code.</p>
+        <div class="content">
+          <img src="../images/img3.webp" alt="" />
+          <h1>Smart Technology</h1>
+          <p>
+            Leveraging AI and automation for tomorrow's challenges with
+            intelligent solutions. Our smart tech stack optimizes performance
+            and enhances user experiences. We implement cutting-edge algorithms
+            to streamline complex processes. Stay ahead with technology designed
+            for the future. Our commitment to innovation ensures that we are
+            always exploring new ways to improve efficiency and effectiveness.
+          </p>
         </div>
-        <div class="container">
-          <h1 class="text">Strategy</h1>
-          <div class="img"><img src="../images/img4.webp" alt="" /></div>
-          <p class="text">Planning and executing comprehensive approaches to achieve business goals.</p>
+        <div class="content">
+          <img src="../images/img4.webp" alt="" />
+          <h1>Future Forward</h1>
+          <p>
+            Building next-generation solutions with modern tech stack and
+            innovative approaches. We anticipate market trends and develop
+            scalable architectures for growth. Our forward-thinking strategies
+            ensure your business remains competitive. Embrace the future with
+            solutions built for tomorrow. We are dedicated to pushing the
+            boundaries of what is possible in technology and business.
+          </p>
         </div>
-        <div class="container">
-          <h1 class="text">Growth</h1>
-          <div class="img"><img src="../images/img5.webp" alt="" /></div>
-          <p class="text">Scaling businesses through data-driven insights and continuous improvement.</p>
-        </div>
+        <div class="content">
+          <img src="../images/img5.webp" alt="" />
+          <h1>Creative Excellence</h1>
+          <p>
+            Pushing boundaries with innovative and artistic vision that inspires
+            change. We combine creative thinking with technical expertise to
+            deliver extraordinary results. Every project is an opportunity to
+            create something remarkable and impactful. Experience excellence
+            that goes beyond expectations. Our passion for creativity drives us
+            to explore new ideas and challenge the status quo.
+          </p>
         </div>
       </div>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-  const elements = document.querySelectorAll(".img, .text");
+    <script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script>
+    <script src="./script.js">
+            document.addEventListener("DOMContentLoaded", () => {
+        const lenis = new Lenis();
 
-  const observer = new IntersectionObserver(
-    (enteries) => {
-      enteries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-          console.log("It Reveals");
-        } else {
-          entry.target.classList.remove("reveal");
-          console.log("It Hides");
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
         }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
-  
-  elements.forEach((el) => observer.observe(el));
+
+        requestAnimationFrame(raf);
+
+        const container = document.querySelector(".container");
+        let currentPos = window.pageYOffset;
+
+        const callDistort = () => {
+          const newPos = window.pageYOffset;
+          const diff = newPos - currentPos;
+          const speed = diff * 0.35;
+
+          container.style.transform = `skewY(${speed}deg)`;
+          currentPos = newPos;
+          requestAnimationFrame(callDistort);
+        };
+        callDistort();
       });
     </script>
   </body>

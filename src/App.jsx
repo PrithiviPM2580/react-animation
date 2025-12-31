@@ -1,7 +1,6 @@
-import BlockRevealOnScroll from "./block-reveal-effect-on-scroll/BlockRevealOnScroll";
-
+import SkewScroll from "./skew-sroll/SkewScroll";
 const App = () => {
-  return <BlockRevealOnScroll />;
+  return <SkewScroll />;
 };
 
 export default App;
