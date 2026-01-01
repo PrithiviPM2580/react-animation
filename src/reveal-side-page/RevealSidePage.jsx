@@ -29,11 +29,39 @@ const RevealSidePage = () => {
 
       tl.from(splitH1.chars, {
         y: 50,
-        stagger: 0.2,
+        stagger: 0.04,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
         ease: "power3.out",
-      });
+      })
+        .to(containerRef.current, {
+          left: "0%",
+          duration: 1.5,
+          ease: "power3.inOut",
+        })
+        .from(".left-side p", {
+          y: 50,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 1,
+          ease: "power3.out",
+        })
+        .from(
+          ".right-side .img",
+          {
+            y: 50,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.5"
+        );
+
+      return () => {
+        splitH1.revert();
+        tl.kill();
+      };
     },
     { scope: containerRef }
   );

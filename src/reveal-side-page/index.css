@@ -45,7 +45,7 @@ body {
   z-index: 1;
   color: #fff;
   font-size: 3rem;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .right-side {
@@ -59,7 +59,6 @@ body {
 .right-side .images {
   display: flex;
   gap: 1em;
-  opacity: 0;
 }
 
 .right-side .images .img {
