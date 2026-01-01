@@ -2,7 +2,9 @@ import { useGSAP } from "@gsap/react";
 import "./index.css";
 import { useRef } from "react";
 import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 
+gsap.registerPlugin(SplitText);
 const paragraph = [
   "Elegant Design",
   "Modern Interface",
@@ -18,9 +20,14 @@ const RevealSidePage = () => {
       gsap.set(containerRef.current, {
         left: "-50%",
       });
+
+      const splitH1 = new SplitText(".right-side h1", {
+        type: "words,chars",
+      });
+
       const tl = gsap.timeline();
 
-      tl.from(".right-side h1", {
+      tl.from(splitH1.chars, {
         y: 50,
         stagger: 0.2,
         opacity: 0,
