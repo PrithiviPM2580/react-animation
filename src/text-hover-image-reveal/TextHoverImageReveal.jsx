@@ -68,21 +68,22 @@ const TextHoverImageReveal = () => {
   return (
     <div className="container" ref={containerRef}>
       <div className="nav">
-        <div class="logo">Logo</div>
-        <div class="name">PPM</div>
-        <div class="link">
+        <div className="logo">Logo</div>
+        <div className="name">PPM</div>
+        <div className="link">
           <p>Home</p>
           <p>Contact</p>
           <p>About</p>
         </div>
       </div>
-      <div class="text">
+      <div className="text">
         <h1>Reach the fullest</h1>
       </div>
       <div className="images">
         {Array.from({ length: 6 }).map((_, index) => (
           <div
-            class="image image1"
+            className="image image1"
+            key={index}
             ref={(el) => (imagesRef.current[index] = el)}
           >
             <img
