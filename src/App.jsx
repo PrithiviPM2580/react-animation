@@ -1,7 +1,6 @@
-import RevealSidePage from "./reveal-side-page/RevealSidePage";
-
+import TextHoverImageReveal from "./text-hover-image-reveal/TextHoverImageReveal";
 const App = () => {
-  return <RevealSidePage />;
+  return <TextHoverImageReveal />;
 };
 
 export default App;
