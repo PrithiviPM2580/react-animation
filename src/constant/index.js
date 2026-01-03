@@ -88,3 +88,20 @@ export const hoverRevealImages = [
     tag: 8,
   },
 ];
+
+export const TYPOGRAPHTY_INTRO_ANIMATION_TEXTS = [
+  "The morning sun illuminated the valley with golden light bringing warmth and hope to all creatures.",
+  "Children laughed and played in the park creating memories that would last throughout their entire lives forever.",
+  "The old bookstore smelled of paper and adventure holding countless stories waiting to be discovered by readers.",
+  "Mountains stood tall and proud against the sky watching over the valleys and forests below them.",
+  "The ocean waves crashed rhythmically on the shore creating a soothing melody that calmed the weary soul.",
+  "Stars twinkled brightly in the night sky reminding us of the vastness and beauty of the universe.",
+  "The garden bloomed with colorful flowers attracting butterflies and bees to dance among the petals gracefully.",
+  "Rain fell gently on the earth nourishing the roots and bringing new life to all the plants.",
+  "The ancient cathedral stood as a testament to human creativity and devotion spanning many generations of builders.",
+  "Music filled the concert hall with emotion touching the hearts of every person sitting in the audience.",
+  "The artist painted with passion creating masterpieces that revealed the depth of the human spirit beautifully.",
+  "Coffee aroma drifted through the morning air inviting everyone to start their day with warmth and comfort.",
+  "The forest whispered secrets through rustling leaves telling ancient tales of creatures and magic within it.",
+  "Time moves forward taking us on a journey through seasons and years shaping our character and destiny.",
+];

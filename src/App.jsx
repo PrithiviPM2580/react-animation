@@ -1,6 +1,6 @@
-import TextHoverImageReveal from "./text-hover-image-reveal/TextHoverImageReveal";
+import TypographyIntroAnimation from "./typography-intro-animation/TypographyIntroAnimation";
 const App = () => {
-  return <TextHoverImageReveal />;
+  return <TypographyIntroAnimation />;
 };
 
 export default App;
