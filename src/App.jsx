@@ -1,6 +1,8 @@
-import TypographyIntroAnimation from "./typography-intro-animation/TypographyIntroAnimation";
+import FullScreenImageSlider from "./fullscreen-image-slider/FullScreenImageSlider";
+
+FullScreenImageSlider;
 const App = () => {
-  return <TypographyIntroAnimation />;
+  return <FullScreenImageSlider />;
 };
 
 export default App;
