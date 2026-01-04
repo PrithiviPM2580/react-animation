@@ -1,3 +1,5 @@
+import "./index.css";
+
 const FullScreenImageSlider = () => {
   return (
     <>
@@ -35,7 +37,7 @@ const FullScreenImageSlider = () => {
       </div>
       <div className="slider">
         {Array.from({ length: 5 }).map((_, index) => (
-          <div className="slide" id={`slide-${index + 1}`}>
+          <div className="slide" id={`slide-${index + 1}`} key={index}>
             <img
               src={`./images/img${index + 1}.png`}
               alt={`Slide ${index + 1}`}
