@@ -122,57 +122,116 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
     <script src="./script.js">
-            document.addEventListener("DOMContentLoaded", function () {
-        const images = document.querySelectorAll(".image");
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides= document.querySelectorAll(".slide");
+        let currentSlideIndex=0;
+        let isAnimating=fals;
+        let currentTopValue=0;
 
-        const splitText = new SplitText(".text h1", { type: "words,chars" });
+        const elements=[
+          {selector:".prefix",delay:0},
+          {selector:".name",delay:0.15},
+          {selector:".years",delay:0.3}
+        ];
 
-        images.forEach((img, index) => {
-          if (index !== 0) {
-            gsap.set(img, {
-              y: "100%",
-            });
+        slides.forEach((slide,index)=>{
+          if(index !== 0){
+            const img= slide.querySelector("img");
+            gsap.set(img,{scale:2,top:"4em"})
           }
-        });
-
-        const tl = gsap.timeline();
-
-        tl.to(".image", {
-          y: "0%",
-          opacity: 1,
-          duration: 1,
-          ease: "power2.easeOut",
-          stagger: 0.5,
         })
-          .to(".images", {
-            y: "25rem",
-            scale: 3,
-            duration: 1,
-            ease: "power2.easeIn",
-            transformOrigin: "center top",
-            delay: 1,
+
+        function showSlde(index){
+          if(isAnimating) return;
+          isAnimating=true;
+          const slide= slides[index];
+          const img= slide.querySelector("img");
+
+
+          currentTopValue -=30;
+
+          elements.forEach((elem)=>{
+            gsap.to(document.querySelector(elem.selector),{
+              y:currentTopValue,
+              duration:2,
+              ease:"power4.inOut",
+              delay:elem.delay
+            })
           })
-          .to(
-            splitText.chars,
-            {
-              y: "100%",
-              duration: 0.6,
-              ease: "power2.easeOut",
-              stagger: 0.05,
-            },
-            "-=0.9"
-          )
-          .from(
-            ".nav",
-            {
-              y: -50,
-              opacity: 0,
-              duration: 0.5,
-              ease: "power2.out",
-              stagger: 0.2,
-            },
-            "-=0.5"
-          );
+
+          gsap.to(img,{
+            scale:1,
+            top:0,
+            duration:2,
+            ease:"power4.inOut",
+          })
+
+          gsap.to(slide,{
+            clipPath:"polygon(0 0,100% 0,100% 100%,0% 100%)",
+            duration:2,
+            ease:"power4.inOut",
+            onComplete:()=>{
+              isAnimating=false;
+            }
+          },"<")
+        }
+
+
+        function hideSlide(index){
+          if(isAnimating) return;
+          isAnimating=true;
+          const slide= slides[index];
+          const img= slide.querySelector("img");
+
+
+       currentTopValue +=30;
+
+       elements.forEach((elem)=>{
+            gsap.to(document.querySelector(elem.selector),{
+              y:currentTopValue,
+              duration:2,
+              ease:"power4.inOut",
+              delay:elem.delay
+            })
+          })
+
+          gsap.to(slide,{
+            clipPath:"polygon(0 100%,100% 100%,100% 100%,0 100%)",
+            duration:2,
+            ease:"power4.inOut",
+            onComplete:()=>{
+              isAnimating=false;
+            }
+          })
+
+            gsap.to(img,{
+            scale:2,
+            top:"4em",
+            duration:2,
+            ease:"power4.inOut",
+          })
+
+           gsap.to(slide,{
+            clipPath:"polygon(0 100%,100% 100%,100% 100%,0 100%)",
+            duration:2,
+            ease:"power4.inOut",
+            onComplete:()=>{
+              isAnimating=false;
+            }
+          })
+        }
+
+        window.addEventListener("wheel",(e)=>{
+          if(isAnimating) return;
+          if(e.deltaY >0 && currentSlideIndex < slides.length -1){
+            showSlde(currentSlideIndex +1);
+            currentSlideIndex++;
+          }
+          else if(e.deltaY <0 && currentSlideIndex >0){
+            hideSlide(currentSlideIndex);
+            currentSlideIndex--;
+          }
+        })
       });
     </script>
   </body>
