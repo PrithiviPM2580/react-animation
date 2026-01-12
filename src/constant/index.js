@@ -105,3 +105,24 @@ export const TYPOGRAPHTY_INTRO_ANIMATION_TEXTS = [
   "The forest whispered secrets through rustling leaves telling ancient tales of creatures and magic within it.",
   "Time moves forward taking us on a journey through seasons and years shaping our character and destiny.",
 ];
+
+export const navsData = [
+  {
+    title: "Creative",
+    subtitle: "Design for the better future",
+    logoClass: "logo-1",
+    navClass: "first-nav",
+  },
+  {
+    title: "Awkward",
+    subtitle: "Showcase the best design",
+    logoClass: "logo-2",
+    navClass: "second-nav",
+  },
+  {
+    title: "Future",
+    subtitle: "Innovate and inspire",
+    logoClass: "logo-3",
+    navClass: "third-nav",
+  },
+];
