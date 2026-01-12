@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
       * {
         margin: 0;
         padding: 0;
@@ -14,224 +16,183 @@
 
       html,
       body {
+        height: 100%;
         width: 100%;
-        height: 100svh;
         overflow: hidden;
-        background-color: #e3dcc7;
+        background-color: #000;
+        color: #fff;
+        font-family: "Bebas Neue", sans-serif;
       }
 
       .container {
-        position: relative;
-        width: 100%;
         height: 100svh;
-        overflow: hidden;
+        width: 100%;
+        background-color: #000;
       }
 
-      .nav {
-        position: absolute;
+      .navs {
+        position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1em 3em;
-        color: rgb(0, 0, 0, 0.6);
+        right: 0;
+        width: max-content;
+        height: max-content;
       }
-      .nav .link {
-        display: flex;
-        align-items: center;
-        gap: 3em;
+      .logo {
+        height: 50px;
+        width: 50px;
+        border-radius: 6px;
       }
 
-      .text {
-        position: absolute;
-        width: 100%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        overflow: hidden;
+      .logo-1 {
+        background-color: #dd1804;
       }
-
-      .text h1 {
-        font-size: 8rem;
-        transform: translateY(-100%);
-        color: rgb(62, 59, 59);
+      .logo-2 {
+        background-color: #d72332;
       }
-
-      .images {
-        position: absolute;
-        top: 50%;
-        left: 50%;
+      .logo-3 {
+        background-color: #ef5605;
+      }
+      .nav {
+        position: relative;
         width: 300px;
-        height: 300px;
-        transform: translate(-50%, -50%);
-        overflow: hidden;
+        height: 100px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        color: #fff;
+        margin: 1em;
+        padding: 15px;
+        font-size: 13px;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        border-radius: 8px;
+        transition: background-color 0.5s, color 0.5s;
+        cursor: pointer;
       }
-      .images .image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        will-change: transform;
+
+      .toggle {
+        position: relative;
+        justify-content: flex-end;
+        display: none;
       }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+
+      .toggle button {
+        border: none;
+        outline: none;
+        background-color: #2a2a2a;
+        color: #fff;
+        margin: 0 1em;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: background-color 0.5s, color 0.5s;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #fff;
+        color: #2a2a2a;
+      }
+
+      .first-nav {
+        top: 0;
+      }
+
+      .second-nav {
+        top: -100px;
+      }
+      .third-nav {
+        top: -200px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="nav">
-        <div class="logo">Logo</div>
-        <div class="name">PPM</div>
-        <div class="link">
-          <p>Home</p>
-          <p>Contact</p>
-          <p>About</p>
+    <div class="container"></div>
+    <div class="navs">
+      <div class="first-nav nav">
+        <div class="logo-1 logo"></div>
+        <div class="titles">
+          <h1>Creative</h1>
+          <p>Design for the better future</p>
         </div>
       </div>
-      <div class="text">
-        <h1>Reach the fullest</h1>
+      <div class="second-nav nav">
+        <div class="logo-2 logo"></div>
+        <div class="titles">
+          <h1>Awkward</h1>
+          <p>Showcase the best design</p>
+        </div>
       </div>
-
-      <div class="images">
-        <div class="image image1">
-          <img src="../images/img1.webp" alt="Image 1" />
+      <div class="third-nav nav">
+        <div class="logo-3 logo"></div>
+        <div class="titles">
+          <h1>Future</h1>
+          <p>Innovate and inspire</p>
         </div>
-        <div class="image image2">
-          <img src="../images/img2.webp" alt="Image 2" />
-        </div>
-        <div class="image image3">
-          <img src="../images/img3.webp" alt="Image 3" />
-        </div>
-        <div class="image image4">
-          <img src="../images/img4.webp" alt="Image 4" />
-        </div>
-        <div class="image image5">
-          <img src="../images/img5.webp" alt="Image 5" />
-        </div>
-        <div class="image image6">
-          <img src="../images/img6.webp" alt="Image 6" />
-        </div>
+      </div>
+      <div class="toggle">
+        <button>Show Less</button>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
     <script src="./script.js">
-      document.addEventListener("DOMContentLoaded", function () {
-        const slides= document.querySelectorAll(".slide");
-        let currentSlideIndex=0;
-        let isAnimating=fals;
-        let currentTopValue=0;
+            document.addEventListener("DOMContentLoaded", function () {
+        const thirdNav = document.querySelector(".third-nav");
+        const toggleButton = document.querySelector(".toggle button");
+        const navs = document.querySelectorAll(".nav");
+        const toggleDiv = document.querySelector(".toggle");
 
-        const elements=[
-          {selector:".prefix",delay:0},
-          {selector:".name",delay:0.15},
-          {selector:".years",delay:0.3}
-        ];
+        let isNavOpen = false;
 
-        slides.forEach((slide,index)=>{
-          if(index !== 0){
-            const img= slide.querySelector("img");
-            gsap.set(img,{scale:2,top:"4em"})
+        thirdNav.addEventListener("click", function () {
+          if (!isNavOpen) {
+            gsap.to(navs, {
+              top: "0px",
+              duration: 1,
+              ease: "power4.inOut",
+            });
+
+            gsap.to(toggleDiv, {
+              delay: 0.4,
+              display: "flex",
+              opacity: 1,
+              duration: 0.4,
+              ease: "power4.inOut",
+            });
+
+            isNavOpen = true;
           }
-        })
+        });
 
-        function showSlde(index){
-          if(isAnimating) return;
-          isAnimating=true;
-          const slide= slides[index];
-          const img= slide.querySelector("img");
+        toggleButton.addEventListener("click", function () {
+          if (isNavOpen) {
+            gsap.to(".first-nav", {
+              top: "0px",
+              duration: 1,
+              ease: "power4.inOut",
+            });
+            gsap.to(".second-nav", {
+              top: "-100px",
+              duration: 1,
+              ease: "power4.inOut",
+            });
+            gsap.to(".third-nav", {
+              top: "-200px",
+              duration: 1,
+              ease: "power4.inOut",
+            });
 
+            gsap.to(toggleDiv, {
+              delay: 0,
+              display: "none",
+              opacity: 0,
+              duration: 0.4,
+              ease: "power4.inOut",
+            });
 
-          currentTopValue -=30;
-
-          elements.forEach((elem)=>{
-            gsap.to(document.querySelector(elem.selector),{
-              y:currentTopValue,
-              duration:2,
-              ease:"power4.inOut",
-              delay:elem.delay
-            })
-          })
-
-          gsap.to(img,{
-            scale:1,
-            top:0,
-            duration:2,
-            ease:"power4.inOut",
-          })
-
-          gsap.to(slide,{
-            clipPath:"polygon(0 0,100% 0,100% 100%,0% 100%)",
-            duration:2,
-            ease:"power4.inOut",
-            onComplete:()=>{
-              isAnimating=false;
-            }
-          },"<")
-        }
-
-
-        function hideSlide(index){
-          if(isAnimating) return;
-          isAnimating=true;
-          const slide= slides[index];
-          const img= slide.querySelector("img");
-
-
-       currentTopValue +=30;
-
-       elements.forEach((elem)=>{
-            gsap.to(document.querySelector(elem.selector),{
-              y:currentTopValue,
-              duration:2,
-              ease:"power4.inOut",
-              delay:elem.delay
-            })
-          })
-
-          gsap.to(slide,{
-            clipPath:"polygon(0 100%,100% 100%,100% 100%,0 100%)",
-            duration:2,
-            ease:"power4.inOut",
-            onComplete:()=>{
-              isAnimating=false;
-            }
-          })
-
-            gsap.to(img,{
-            scale:2,
-            top:"4em",
-            duration:2,
-            ease:"power4.inOut",
-          })
-
-           gsap.to(slide,{
-            clipPath:"polygon(0 100%,100% 100%,100% 100%,0 100%)",
-            duration:2,
-            ease:"power4.inOut",
-            onComplete:()=>{
-              isAnimating=false;
-            }
-          })
-        }
-
-        window.addEventListener("wheel",(e)=>{
-          if(isAnimating) return;
-          if(e.deltaY >0 && currentSlideIndex < slides.length -1){
-            showSlde(currentSlideIndex +1);
-            currentSlideIndex++;
+            isNavOpen = false;
           }
-          else if(e.deltaY <0 && currentSlideIndex >0){
-            hideSlide(currentSlideIndex);
-            currentSlideIndex--;
-          }
-        })
+        });
       });
     </script>
   </body>

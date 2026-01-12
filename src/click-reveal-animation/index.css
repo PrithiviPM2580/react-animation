@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.container {
+  height: 100svh;
+  width: 100%;
+  background-color: #000;
+}
+
+.navs {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: max-content;
+  height: max-content;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 6px;
+}
+
+.logo-1 {
+  background-color: #dd1804;
+}
+.logo-2 {
+  background-color: #d72332;
+}
+.logo-3 {
+  background-color: #ef5605;
+}
+.nav {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  color: #fff;
+  margin: 1em;
+  padding: 15px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border-radius: 8px;
+  transition: background-color 0.5s, color 0.5s;
+  cursor: pointer;
+}
+
+.toggle {
+  position: relative;
+  justify-content: flex-end;
+  display: none;
+}
+
+.toggle button {
+  border: none;
+  outline: none;
+  background-color: #2a2a2a;
+  color: #fff;
+  margin: 0 1em;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background-color 0.5s, color 0.5s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #2a2a2a;
+}
+
+.first-nav {
+  top: 0;
+}
+
+.second-nav {
+  top: -100px;
+}
+.third-nav {
+  top: -200px;
+}

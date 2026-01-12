@@ -1,8 +1,7 @@
-import FullScreenImageSlider from "./fullscreen-image-slider/FullScreenImageSlider";
+import ClickRevealAnimation from "./click-reveal-animation/ClickRevealAnimation";
 
-FullScreenImageSlider;
 const App = () => {
-  return <FullScreenImageSlider />;
+  return <ClickRevealAnimation />;
 };
 
 export default App;
