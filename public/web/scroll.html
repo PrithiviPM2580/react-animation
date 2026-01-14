@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
 
       * {
         margin: 0;
@@ -18,181 +18,207 @@
       body {
         height: 100%;
         width: 100%;
-        overflow: hidden;
+        background-color: #fff;
+        font-family: "Pirata One", system-ui;
+      }
+
+      .loader {
+        width: 100%;
+        height: 100svh;
+      }
+
+      .loader-clip {
+        position: absolute;
+        width: 100%;
+        height: 33.3vh;
+        overflow: clip;
+        z-index: 1000;
+      }
+
+      .clip-top {
+        top: 0%;
+        clip-path: inset(0 0 0 0);
         background-color: #000;
+      }
+
+      .clip-bottom {
+        bottom: 0;
+        clip-path: inset(0 0 0 0);
+        background-color: #000;
+      }
+
+      .clip-center {
+        position: relative;
+        width: 100%;
+        height: 33.3vh;
+        top: 33.3vh;
+        overflow: hidden;
+      }
+
+      .marquee {
+        position: absolute;
+        top: 200%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200vw;
+        mix-blend-mode: difference;
+        font-size: 16vw;
         color: #fff;
-        font-family: "Bebas Neue", sans-serif;
+      }
+
+      .marquee-container {
+        width: 100%;
+        padding-top: 0.2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .container {
-        height: 100svh;
-        width: 100%;
-        background-color: #000;
-      }
-
-      .navs {
-        position: fixed;
+        position: absolute;
         top: 0;
-        right: 0;
-        width: max-content;
-        height: max-content;
-      }
-      .logo {
-        height: 50px;
-        width: 50px;
-        border-radius: 6px;
+        width: 100%;
+        height: 100svh;
+        overflow: hidden;
+        z-index: 1;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        font-size: 14px;
       }
 
-      .logo-1 {
-        background-color: #dd1804;
-      }
-      .logo-2 {
-        background-color: #d72332;
-      }
-      .logo-3 {
-        background-color: #ef5605;
+      .container .navs {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 1em 3em;
+        justify-content: space-between;
       }
       .nav {
-        position: relative;
-        width: 300px;
-        height: 100px;
         display: flex;
-        gap: 15px;
-        align-items: center;
-        color: #fff;
-        margin: 1em;
-        padding: 15px;
-        font-size: 13px;
-        background-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(16px);
-        border-radius: 8px;
-        transition: background-color 0.5s, color 0.5s;
-        cursor: pointer;
+        gap: 2em;
       }
 
-      .toggle {
-        position: relative;
-        justify-content: flex-end;
-        display: none;
-      }
-
-      .toggle button {
-        border: none;
-        outline: none;
-        background-color: #2a2a2a;
-        color: #fff;
-        margin: 0 1em;
-        padding: 8px 16px;
-        border-radius: 20px;
-        transition: background-color 0.5s, color 0.5s;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #fff;
-        color: #2a2a2a;
-      }
-
-      .first-nav {
-        top: 0;
-      }
-
-      .second-nav {
-        top: -100px;
-      }
-      .third-nav {
-        top: -200px;
+      .container .footer {
+        padding-bottom: 1.5em;
       }
     </style>
   </head>
   <body>
-    <div class="container"></div>
-    <div class="navs">
-      <div class="first-nav nav">
-        <div class="logo-1 logo"></div>
-        <div class="titles">
-          <h1>Creative</h1>
-          <p>Design for the better future</p>
+    <div class="loader">
+      <div class="loader-clip clip-top">
+        <div class="marquee">
+          <div class="marquee-container">
+            <span>Rove&reg;</span>
+            <span>Rove&reg;</span>
+            Rove&reg;
+            <span>Rove&reg;</span>
+            <span>Rove&reg;</span>
+          </div>
         </div>
       </div>
-      <div class="second-nav nav">
-        <div class="logo-2 logo"></div>
-        <div class="titles">
-          <h1>Awkward</h1>
-          <p>Showcase the best design</p>
+      <div class="loader-clip clip-bottom">
+        <div class="marquee">
+          <div class="marquee-container">
+            <span>Rove&reg;</span>
+            <span>Rove&reg;</span>
+            Rove&reg;
+            <span>Rove&reg;</span>
+            <span>Rove&reg;</span>
+          </div>
         </div>
       </div>
-      <div class="third-nav nav">
-        <div class="logo-3 logo"></div>
-        <div class="titles">
-          <h1>Future</h1>
-          <p>Innovate and inspire</p>
+      <div class="clip-center">
+        <div class="marquee">
+          <div class="marquee-container">
+            <span>Rove&reg;</span>
+            <span>Rove&reg;</span>
+            Rove&reg;
+            <span>Rove&reg;</span>
+            <span>Rove&reg;</span>
+          </div>
         </div>
       </div>
-      <div class="toggle">
-        <button>Show Less</button>
+    </div>
+    <div class="container">
+      <div class="navs">
+        <div class="logo">Brand</div>
+        <div class="name">PPM</div>
+        <div class="nav">
+          <p>Home</p>
+          <p>Contact</p>
+          <p>Shop</p>
+        </div>
+      </div>
+      <div class="footer">
+        <p>© 2024 Brand. All rights reserved.</p>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="./script.js">
-            document.addEventListener("DOMContentLoaded", function () {
-        const thirdNav = document.querySelector(".third-nav");
-        const toggleButton = document.querySelector(".toggle button");
-        const navs = document.querySelectorAll(".nav");
-        const toggleDiv = document.querySelector(".toggle");
-
-        let isNavOpen = false;
-
-        thirdNav.addEventListener("click", function () {
-          if (!isNavOpen) {
-            gsap.to(navs, {
-              top: "0px",
-              duration: 1,
-              ease: "power4.inOut",
-            });
-
-            gsap.to(toggleDiv, {
-              delay: 0.4,
-              display: "flex",
-              opacity: 1,
-              duration: 0.4,
-              ease: "power4.inOut",
-            });
-
-            isNavOpen = true;
-          }
+            document.addEventListener("DOMContentLoaded", () => {
+        const tl = gsap.timeline({
+          defaults: { ease: "power2.inOut", duration: 3.5 },
         });
 
-        toggleButton.addEventListener("click", function () {
-          if (isNavOpen) {
-            gsap.to(".first-nav", {
-              top: "0px",
+        tl.from(".clip-top , .clip-bottom", {
+          duration: 2,
+          delay: 0.2,
+          height: "50vh",
+        })
+          .to(
+            ".marquee",
+            {
+              duration: 2,
+              top: "50%",
+            },
+            "-=1.5"
+          )
+          .from(
+            ".clip-top .marquee, .clip-bottom .marquee",
+            {
+              duration: 5,
+              left: "100%",
+              ease: "power3.inOut",
+            },
+            "-=2.5"
+          )
+          .from(
+            ".clip-center .marquee",
+            {
+              duration: 5,
+              left: "-50%",
+              ease: "power3.inOut",
+            },
+            "<"
+          )
+          .to(
+            ".clip-top",
+            {
               duration: 1,
-              ease: "power4.inOut",
-            });
-            gsap.to(".second-nav", {
-              top: "-100px",
+              clipPath: "inset(0 0 100% 0)",
+            },
+            "-=1"
+          )
+          .to(
+            ".clip-bottom",
+            {
               duration: 1,
-              ease: "power4.inOut",
-            });
-            gsap.to(".third-nav", {
-              top: "-200px",
+              clipPath: "inset(100% 0 0 0)",
+            },
+            "<"
+          )
+          .to(
+            "clip-top .marquee, .clip-bottom .marquee, .clip-center .marquee span",
+            {
               duration: 1,
-              ease: "power4.inOut",
-            });
-
-            gsap.to(toggleDiv, {
-              delay: 0,
-              display: "none",
               opacity: 0,
-              duration: 0.4,
-              ease: "power4.inOut",
-            });
-
-            isNavOpen = false;
-          }
-        });
+              ease: "power2.inOut",
+            },"-=.9.8"
+          );
       });
     </script>
   </body>
