@@ -1,7 +1,6 @@
-import ClickRevealAnimation from "./click-reveal-animation/ClickRevealAnimation";
-
+import LoaderRevealAnimation from "./loader-reveal-animation/LoaderRevealAnimation";
 const App = () => {
-  return <ClickRevealAnimation />;
+  return <LoaderRevealAnimation />;
 };
 
 export default App;
