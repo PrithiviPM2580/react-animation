@@ -1,6 +1,6 @@
-import BlockRevealOnClick from "./block-reveal-on-click/BlockRevealOnClick";
+import RevealLoader from "./reveal-loader/RevealLoader";
 const App = () => {
-  return <BlockRevealOnClick />;
+  return <RevealLoader />;
 };
 
 export default App;

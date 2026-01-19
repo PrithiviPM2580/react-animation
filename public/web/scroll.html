@@ -1,84 +1,221 @@
-<!-- import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Erica+One&display=swap");
 
-const SQUARE_SIZE = 100;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-export default function OverlaySquares() {
-  const containerRef = useRef(null);
-  const overlayRef = useRef(null);
-  const squaresRef = useRef([]);
-  const tlRef = useRef(null);
+      html,
+      body {
+        height: 100svh;
+        width: 100%;
+        font-family: "Erica One", sans-serif;
+        background-color: #a0a0a0;
+        overflow: hidden;
+      }
 
-  const [visible, setVisible] = useState(false);
+      .container {
+        width: 100%;
+        height: 100svh;
+        overflow: hidden;
+      }
 
-  // Create squares ONCE (or on resize)
-  useEffect(() => {
-    const createSquares = () => {
-      const cols = Math.ceil(window.innerWidth / SQUARE_SIZE);
-      const rows = Math.ceil(window.innerHeight / SQUARE_SIZE);
-      const total = cols * rows;
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1em 3em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 100;
+      }
+      nav .link {
+        display: flex;
+        gap: 1em;
+        cursor: pointer;
+      }
 
-      squaresRef.current = Array.from({ length: total });
-    };
+      .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 2em;
+      }
 
-    createSquares();
+      .header .h1 {
+        position: relative;
+        font-size: 28vw;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        line-height: 0.85;
+      }
 
-    window.addEventListener("resize", createSquares);
-    return () => window.removeEventListener("resize", createSquares);
-  }, []);
+      .hero {
+        position: relative;
+        width: calc(100vw - 4em);
+        height: 100%;
+        margin: 0 auto 2em;
+        border-radius: 10px;
+        border: 4px solid #1a1a1a;
+      }
+      .hero-img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-  // Animate on toggle
-  useEffect(() => {
-    if (!squaresRef.current.length) return;
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100svh;
+        display: flex;
+        z-index: 2;
+      }
 
-    // kill previous animation
-    tlRef.current?.kill();
+      .bar {
+        width: 10vw;
+        height: 105vh;
+        background-color: #1a1a1a;
+      }
 
-    const squares = containerRef.current.children;
+      .counter {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 0.2em 0.4em;
+        font-size: 20vw;
+        color: #bcbcc4;
+        z-index: 10;
+        line-height: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="counter">0</div>
 
-    gsap.set(squares, { opacity: 0 });
+    <div class="overlay">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
 
-    tlRef.current = gsap.timeline();
-
-    tlRef.current
-      .to(squares, {
-        opacity: 1,
-        duration: 0.15,
-        stagger: { each: 0.004, from: "random" }
-      })
-      .to(squares, {
-        opacity: 0,
-        duration: 0.15,
-        stagger: { each: 0.004, from: "random" }
-      });
-
-    gsap.to(overlayRef.current, {
-      opacity: visible ? 1 : 0,
-      visibility: visible ? "visible" : "hidden",
-      zIndex: visible ? 0 : -1,
-      duration: 0.2
-    });
-
-  }, [visible]);
-
-  return (
-    <>
-      <button className="toggle" onClick={() => setVisible(v => !v)}>
-        ☰
-      </button>
-
-      <div ref={overlayRef} className="overlay">
-        <div ref={containerRef} className="square-container">
-          {squaresRef.current.map((_, i) => (
-            <div
-              key={i}
-              className="square"
-            />
-          ))}
+    <div class="container">
+      <nav class="navs">
+        <div class="logo">Logo</div>
+        <div class="name">PPM</div>
+        <div class="link">
+          <p>Home</p>
+          <p>Shop</p>
+          <p>Contact</p>
         </div>
-      </div>
-    </>
-  );
-}
+      </nav>
 
- -->
+      <div class="header">
+        <div class="h1">f</div>
+        <div class="h1">l</div>
+        <div class="h1">a</div>
+        <div class="h1">u</div>
+        <div class="h1">.</div>
+      </div>
+
+      <div class="hero">
+        <img src="../images/img5.png" alt="" />
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="./script.js">
+            document.addEventListener("DOMContentLoaded", () => {
+        function startLoader() {
+          let counterElement = document.querySelector(".counter");
+          let currentValue = 0;
+
+          function updateCounter() {
+            if (currentValue === 100) return;
+
+            currentValue += Math.floor(Math.random() * 10) + 1;
+
+            if (currentValue > 100) {
+              currentValue = 100;
+            }
+
+            counterElement.textContent = currentValue;
+
+            let delay = Math.floor(Math.random() * 200) + 50;
+
+            setTimeout(updateCounter, delay);
+          }
+
+          updateCounter();
+        }
+
+        startLoader();
+
+        const tl = gsap.timeline();
+
+        tl.to(".counter", {
+          opacity: 0,
+          duration: 0.25,
+          delay: 3.5,
+        })
+          .to(".bar", {
+            duration: 2,
+            height: 0,
+            stagger: {
+              amount: 0.5,
+            },
+            ease: "power4.inOut",
+          })
+          .from(
+            ".h1",
+            {
+              duration: 1.5,
+              y: 700,
+              stagger: {
+                amount: 0.5,
+              },
+              ease: "power4.inOut",
+            },
+            "-=1.5",
+          )
+          .from(
+            ".hero",
+            {
+              y: 400,
+              duration: 1,
+              ease: "power4.inOut",
+            },
+            "-=1",
+          );
+      });
+    </script>
+  </body>
+</html>
