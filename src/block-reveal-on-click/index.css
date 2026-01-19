@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Tiny5&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Tiny5", sans-serif;
+}
+
+.content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.content h1 {
+  font-size: 8rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.05;
+}
+
+.toggle {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0;
+  padding: 0.8em 2.5em;
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 50px -10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  font-size: 20px;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+.nav p {
+  cursor: pointer;
+}
+
+.navs {
+  display: flex;
+  gap: 2em;
+}
+
+.square-container {
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: #fd552f;
+  pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8em;
+  background-color: #242424;
+  color: #fff;
+  z-index: -1;
+}
+
+.overlay .h1 {
+  font-size: 6rem;
+  color: #fd552f;
+}
+
+.menus {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.menu-nav {
+  display: flex;
+  gap: 1em;
+  font-size: 3rem;
+  text-transform: uppercase;
+}

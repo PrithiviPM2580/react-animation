@@ -1,225 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+<!-- import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+const SQUARE_SIZE = 100;
 
-      html,
-      body {
-        height: 100%;
-        width: 100%;
-        background-color: #fff;
-        font-family: "Pirata One", system-ui;
-      }
+export default function OverlaySquares() {
+  const containerRef = useRef(null);
+  const overlayRef = useRef(null);
+  const squaresRef = useRef([]);
+  const tlRef = useRef(null);
 
-      .loader {
-        width: 100%;
-        height: 100svh;
-      }
+  const [visible, setVisible] = useState(false);
 
-      .loader-clip {
-        position: absolute;
-        width: 100%;
-        height: 33.3vh;
-        overflow: clip;
-        z-index: 1000;
-      }
+  // Create squares ONCE (or on resize)
+  useEffect(() => {
+    const createSquares = () => {
+      const cols = Math.ceil(window.innerWidth / SQUARE_SIZE);
+      const rows = Math.ceil(window.innerHeight / SQUARE_SIZE);
+      const total = cols * rows;
 
-      .clip-top {
-        top: 0%;
-        clip-path: inset(0 0 0 0);
-        background-color: #000;
-      }
+      squaresRef.current = Array.from({ length: total });
+    };
 
-      .clip-bottom {
-        bottom: 0;
-        clip-path: inset(0 0 0 0);
-        background-color: #000;
-      }
+    createSquares();
 
-      .clip-center {
-        position: relative;
-        width: 100%;
-        height: 33.3vh;
-        top: 33.3vh;
-        overflow: hidden;
-      }
+    window.addEventListener("resize", createSquares);
+    return () => window.removeEventListener("resize", createSquares);
+  }, []);
 
-      .marquee {
-        position: absolute;
-        top: 200%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200vw;
-        mix-blend-mode: difference;
-        font-size: 16vw;
-        color: #fff;
-      }
+  // Animate on toggle
+  useEffect(() => {
+    if (!squaresRef.current.length) return;
 
-      .marquee-container {
-        width: 100%;
-        padding-top: 0.2em;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    // kill previous animation
+    tlRef.current?.kill();
 
-      .container {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100svh;
-        overflow: hidden;
-        z-index: 1;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        font-size: 14px;
-      }
+    const squares = containerRef.current.children;
 
-      .container .navs {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 1em 3em;
-        justify-content: space-between;
-      }
-      .nav {
-        display: flex;
-        gap: 2em;
-      }
+    gsap.set(squares, { opacity: 0 });
 
-      .container .footer {
-        padding-bottom: 1.5em;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="loader">
-      <div class="loader-clip clip-top">
-        <div class="marquee">
-          <div class="marquee-container">
-            <span>Rove&reg;</span>
-            <span>Rove&reg;</span>
-            Rove&reg;
-            <span>Rove&reg;</span>
-            <span>Rove&reg;</span>
-          </div>
-        </div>
-      </div>
-      <div class="loader-clip clip-bottom">
-        <div class="marquee">
-          <div class="marquee-container">
-            <span>Rove&reg;</span>
-            <span>Rove&reg;</span>
-            Rove&reg;
-            <span>Rove&reg;</span>
-            <span>Rove&reg;</span>
-          </div>
-        </div>
-      </div>
-      <div class="clip-center">
-        <div class="marquee">
-          <div class="marquee-container">
-            <span>Rove&reg;</span>
-            <span>Rove&reg;</span>
-            Rove&reg;
-            <span>Rove&reg;</span>
-            <span>Rove&reg;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="navs">
-        <div class="logo">Brand</div>
-        <div class="name">PPM</div>
-        <div class="nav">
-          <p>Home</p>
-          <p>Contact</p>
-          <p>Shop</p>
-        </div>
-      </div>
-      <div class="footer">
-        <p>© 2024 Brand. All rights reserved.</p>
-      </div>
-    </div>
+    tlRef.current = gsap.timeline();
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script src="./script.js">
-            document.addEventListener("DOMContentLoaded", () => {
-        const tl = gsap.timeline({
-          defaults: { ease: "power2.inOut", duration: 3.5 },
-        });
-
-        tl.from(".clip-top , .clip-bottom", {
-          duration: 2,
-          delay: 0.2,
-          height: "50vh",
-        })
-          .to(
-            ".marquee",
-            {
-              duration: 2,
-              top: "50%",
-            },
-            "-=1.5"
-          )
-          .from(
-            ".clip-top .marquee, .clip-bottom .marquee",
-            {
-              duration: 5,
-              left: "100%",
-              ease: "power3.inOut",
-            },
-            "-=2.5"
-          )
-          .from(
-            ".clip-center .marquee",
-            {
-              duration: 5,
-              left: "-50%",
-              ease: "power3.inOut",
-            },
-            "<"
-          )
-          .to(
-            ".clip-top",
-            {
-              duration: 1,
-              clipPath: "inset(0 0 100% 0)",
-            },
-            "-=1"
-          )
-          .to(
-            ".clip-bottom",
-            {
-              duration: 1,
-              clipPath: "inset(100% 0 0 0)",
-            },
-            "<"
-          )
-          .to(
-            "clip-top .marquee, .clip-bottom .marquee, .clip-center .marquee span",
-            {
-              duration: 1,
-              opacity: 0,
-              ease: "power2.inOut",
-            },"-=.9.8"
-          );
+    tlRef.current
+      .to(squares, {
+        opacity: 1,
+        duration: 0.15,
+        stagger: { each: 0.004, from: "random" }
+      })
+      .to(squares, {
+        opacity: 0,
+        duration: 0.15,
+        stagger: { each: 0.004, from: "random" }
       });
-    </script>
-  </body>
-</html>
+
+    gsap.to(overlayRef.current, {
+      opacity: visible ? 1 : 0,
+      visibility: visible ? "visible" : "hidden",
+      zIndex: visible ? 0 : -1,
+      duration: 0.2
+    });
+
+  }, [visible]);
+
+  return (
+    <>
+      <button className="toggle" onClick={() => setVisible(v => !v)}>
+        ☰
+      </button>
+
+      <div ref={overlayRef} className="overlay">
+        <div ref={containerRef} className="square-container">
+          {squaresRef.current.map((_, i) => (
+            <div
+              key={i}
+              className="square"
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+ -->

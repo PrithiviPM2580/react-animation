@@ -1,6 +1,6 @@
-import LoaderRevealAnimation from "./loader-reveal-animation/LoaderRevealAnimation";
+import BlockRevealOnClick from "./block-reveal-on-click/BlockRevealOnClick";
 const App = () => {
-  return <LoaderRevealAnimation />;
+  return <BlockRevealOnClick />;
 };
 
 export default App;
