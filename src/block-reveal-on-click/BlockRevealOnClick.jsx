@@ -1,99 +1,79 @@
-import { useRef, useEffect, useState } from "react";
-import "./index.css";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import "./index.css";
 
-const SQUARE_SIZE = 100;
-
-const BlockRevealOnClick = () => {
-  const squareContainerRef = useRef(null);
+export default function App() {
   const overlayRef = useRef(null);
+  const squareContainerRef = useRef(null);
   const squaresRef = useRef([]);
   const tlRef = useRef(null);
-  const [visible, setVisible] = useState(false);
+
+  const [overlayVisible, setOverlayVisible] = useState(false);
+
+  const squareSize = 100;
 
   useEffect(() => {
-    createSquares();
+    gsap.set(overlayRef.current, {
+      opacity: 0,
+      visibility: "hidden",
+      zIndex: -1,
+    });
   }, []);
 
-  useGSAP(
-    () => {
-      const squares = squareContainerRef.current?.querySelectorAll(".square");
-      if (!squares || !squares.length) return;
+  const createSquares = () => {
+    const cols = Math.ceil(window.innerWidth / squareSize);
+    const rows = Math.ceil(window.innerHeight / squareSize);
+    const total = cols * rows;
 
-      tlRef.current?.kill();
+    if (squaresRef.current.length === total) return;
 
-      gsap.set(squares, {
+    squaresRef.current = [];
+    squareContainerRef.current.innerHTML = "";
+
+    for (let i = 0; i < total; i++) {
+      const square = document.createElement("div");
+      square.className = "square";
+      squareContainerRef.current.appendChild(square);
+      squaresRef.current.push(square);
+    }
+  };
+
+  const animateSquares = (show) => {
+    if (tlRef.current) tlRef.current.kill();
+
+    gsap.set(squaresRef.current, { opacity: 0 });
+
+    tlRef.current = gsap
+      .timeline()
+      .to(squaresRef.current, {
+        opacity: 1,
+        duration: 0.15,
+        stagger: { each: 0.004, from: "random" },
+      })
+      .to(squaresRef.current, {
         opacity: 0,
-      });
-
-      tlRef.current = gsap.timeline({ paused: true });
-
-      tlRef.current
-        .to(squares, {
-          opacity: 1,
-          duration: 0.15,
-          stagger: { each: 0.004, from: "random" },
-        })
-        .to(squares, {
-          opacity: 0,
-          duration: 0.15,
-          stagger: { each: 0.004, from: "random" },
-        });
-
-      gsap.to(overlayRef.current, {
-        opacity: visible ? 1 : 0,
-        visibility: visible ? "visible" : "hidden",
-        zIndex: visible ? 0 : -1,
+        duration: 0.15,
+        stagger: { each: 0.004, from: "random" },
+      })
+      .to(overlayRef.current, {
+        opacity: show ? 1 : 0,
+        visibility: show ? "visible" : "hidden",
+        zIndex: show ? 0 : -1,
         duration: 0.2,
       });
-    },
-    { scope: squareContainerRef, dependencies: [visible] },
-  );
-
-  const createSquares = () => {
-    const cols = Math.ceil(window.innerWidth / SQUARE_SIZE);
-    const rows = Math.ceil(window.innerHeight / SQUARE_SIZE);
-    const totalSquares = cols * rows;
-    squaresRef.current = Array.from({ length: totalSquares });
   };
 
-  const handleReveal = () => {
-    if (!tlRef.current) {
-      const squares = squareContainerRef.current?.querySelectorAll(".square");
-      if (!squares || !squares.length) return;
-
-      gsap.set(squares, { opacity: 0 });
-      tlRef.current = gsap.timeline({ paused: true });
-
-      tlRef.current
-        .to(squares, {
-          opacity: 1,
-          duration: 0.15,
-          stagger: { each: 0.004, from: "random" },
-        })
-        .to(squares, {
-          opacity: 0,
-          duration: 0.15,
-          stagger: { each: 0.004, from: "random" },
-        });
-    }
-
-    tlRef.current.play();
-    setVisible((prev) => !prev);
-
-    gsap.to(overlayRef.current, {
-      opacity: visible ? 0 : 1,
-      visibility: visible ? "hidden" : "visible",
-      zIndex: visible ? -1 : 0,
-      duration: 0.2,
-    });
+  const handleToggle = () => {
+    createSquares();
+    animateSquares(!overlayVisible);
+    setOverlayVisible((prev) => !prev);
   };
+
   return (
     <>
-      <button className="toggle" onClick={handleReveal}>
-        <span>&#9776;</span>
-      </button>
+      <div className="toggle" onClick={handleToggle}>
+        <div>&#9776;</div>
+      </div>
 
       <div className="nav">
         <p className="logo">Logo</p>
@@ -136,13 +116,7 @@ const BlockRevealOnClick = () => {
         </div>
       </div>
 
-      <div className="square-container" ref={squareContainerRef}>
-        {squaresRef.current.map((_, index) => {
-          return <div className="square" key={index}></div>;
-        })}
-      </div>
+      <div className="square-container" ref={squareContainerRef}></div>
     </>
   );
-};
-
-export default BlockRevealOnClick;
+}
