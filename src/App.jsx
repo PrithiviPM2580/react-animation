@@ -1,6 +1,6 @@
-import RevealLoader from "./reveal-loader/RevealLoader";
+import PageTransitionButtom from "./page-transition-bottom/PageTransitionButtom";
 const App = () => {
-  return <RevealLoader />;
+  return <PageTransitionButtom />;
 };
 
 export default App;
