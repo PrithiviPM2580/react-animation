@@ -1,6 +1,6 @@
-import PageTransitionButtom from "./page-transition-bottom/PageTransitionButtom";
+import RevealClippathOnClick from "./reveal-clip-path-onclick/RevealClippathOnClick";
 const App = () => {
-  return <PageTransitionButtom />;
+  return <RevealClippathOnClick />;
 };
 
 export default App;
