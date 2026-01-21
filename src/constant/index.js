@@ -163,25 +163,25 @@ export const galleryData = [
 export const projectGallery = [
   {
     title: "C2 Montreal",
-    src: "c2montreal.png",
+    src: "./images/img1.png",
     color: "#000000",
   },
 
   {
     title: "Office Studio",
-    src: "officestudio.png",
+    src: "./images/img2.png",
     color: "#8C8C8C",
   },
 
   {
     title: "Locomotive",
-    src: "locomotive.png",
+    src: "./images/img3.png",
     color: "#EFE8D3",
   },
 
   {
     title: "Silencio",
-    src: "silencio.png",
+    src: "./images/img4.png",
     color: "#706D63",
   },
 ];
