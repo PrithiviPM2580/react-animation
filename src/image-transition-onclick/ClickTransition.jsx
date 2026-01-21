@@ -1,18 +1,21 @@
 import React from "react";
 
-const ClickTransition = ({ itemData }) => {
+const ClickTransition = ({ active, handleBack }) => {
   return (
     <div className="img-transition-container">
       <div className="img-transition">
         <div className="img-box">
-          <img src="./images/img1.png" alt="" />
+          <img src={active.img} alt="" />
         </div>
       </div>
       <div className="text-transition">
         <div className="text">
-          <p>Azure</p>
+          <p>{active.text}</p>
         </div>
       </div>
+      <p className="back-cursor" onClick={handleBack}>
+        &larr;
+      </p>
     </div>
   );
 };
