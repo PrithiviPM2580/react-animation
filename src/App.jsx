@@ -1,6 +1,6 @@
-import RevealClippathOnClick from "./reveal-clip-path-onclick/RevealClippathOnClick";
+import ImageTransitionOnClick from "./image-transition-onclick/ImageTransitionOnClick";
 const App = () => {
-  return <RevealClippathOnClick />;
+  return <ImageTransitionOnClick />;
 };
 
 export default App;

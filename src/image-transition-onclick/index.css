@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Italiana&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100svh;
+  font-family: "Italiana", sans-serif;
+  overflow: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 3em;
+}
+
+nav > div {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.img-container {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+}
+
+.img-container > div {
+  width: 50%;
+  padding: 2em;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.text {
+  width: max-content;
+  height: max-content;
+  line-height: 1.1;
+  overflow: hidden;
+}
+
+.text p {
+  font-size: 6rem;
+  text-transform: uppercase;
+  will-change: transform;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.img-container .img {
+  width: 150px;
+  height: 220px;
+}
