@@ -13,6 +13,13 @@ body {
   overflow: hidden;
 }
 
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -35,6 +42,7 @@ nav > div {
   width: 100%;
   height: 100svh;
   display: flex;
+  opacity: 0;
 }
 
 .img-container > div {
@@ -83,4 +91,39 @@ img {
 .img-container .img {
   width: 150px;
   height: 220px;
+}
+
+.img-transition-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 10;
+}
+
+.img-transition-container > div {
+  width: 50%;
+}
+
+.img-transition,
+.text-transition {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-box {
+  width: 500px;
+  height: 700px;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  will-change: clip-path;
+}
+
+.text-transition .text p {
+  font-size: 6rem;
+  cursor: auto;
 }

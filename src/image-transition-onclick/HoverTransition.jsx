@@ -1,14 +1,12 @@
+import { useGSAP } from "@gsap/react";
 import { useState } from "react";
 
-const itemData = [
-  { text: "Azure", img: "./images/img1.png" },
-  { text: "Euphoria", img: "./images/img2.png" },
-  { text: "Serendipity", img: "./images/img3.png" },
-  { text: "Luminous", img: "./images/img4.png" },
-  { text: "Ephemeral", img: "./images/img5.png" },
-];
-const HoverTransition = () => {
+const HoverTransition = ({ itemData }) => {
   const [activeImg, setActiveImg] = useState(itemData[0].img);
+
+  useGSAP(() => {});
+
+  const handleTransitionClick = (e) => {};
   return (
     <div className="img-container">
       <div className="text-container">
@@ -17,6 +15,7 @@ const HoverTransition = () => {
             className="text"
             key={index}
             onMouseEnter={() => setActiveImg(item.img)}
+            onClick={handleTransitionClick}
           >
             <p>{item.text}</p>
           </div>
