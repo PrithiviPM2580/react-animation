@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./index.css";
+import { galleryData } from "../constant";
+import { useRef } from "react";
+import gsap from "gsap";
 
 const data = [
   { id: 1, title: "Image 1", imgSrc: "./images/img1.png" },
@@ -12,29 +15,42 @@ const data = [
 
 const GalleryReveal = () => {
   const [activeData, setActiveData] = useState(data[0]);
+  const tl = useRef(null);
+  const revealerRef = useRef(null);
+
+  const handleTransitionClick = (item) => {
+    setActiveData(item);
+    const ctx = gsap.context(() => {
+      tl.current = gsap
+        .timeline({ defaults: { ease: "power4.inOut" } })
+        .to(".revealer", {
+          yPercent: 0,
+          duration: 1.5,
+        });
+    }, revealerRef);
+
+    return () => ctx.revert();
+  };
   return (
     <div className="container">
       <div className="gallery">
         <h1>Drive / Moment</h1>
         <div className="gallery-box">
-          {Array.from({ length: 30 }).map((_, index) => {
-            const imgIndex = (index % 6) + 1;
-
-            return (
-              <div className="gallery-item" key={index}>
-                <div className="img">
-                  <img
-                    src={`./images/img${imgIndex}.png`}
-                    alt={`Image ${imgIndex}`}
-                  />
-                </div>
-                <p>{`Image ${imgIndex}`}</p>
+          {galleryData.map((item, index) => (
+            <div
+              className="gallery-item"
+              key={index}
+              onClick={() => handleTransitionClick(item)}
+            >
+              <div className="img">
+                <img src={item.imgSrc} alt={`Image ${item.id}`} />
               </div>
-            );
-          })}
+              <p>{`Image ${item.title}`}</p>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="revealer">
+      <div className="revealer" ref={revealerRef}>
         <div className="name">{activeData.title}</div>
         <div className="revealer-img">
           <div className="img">
