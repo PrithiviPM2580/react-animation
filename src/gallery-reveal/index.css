@@ -76,6 +76,9 @@ img {
 .revealer .img {
   height: 650px;
   width: 500px;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  transition: clip-path 0.8s ease-in-out;
+  will-change: clip-path;
   overflow: hidden;
 }
 

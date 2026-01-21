@@ -4,17 +4,8 @@ import { galleryData } from "../constant";
 import { useRef } from "react";
 import gsap from "gsap";
 
-const data = [
-  { id: 1, title: "Image 1", imgSrc: "./images/img1.png" },
-  { id: 2, title: "Image 2", imgSrc: "./images/img2.png" },
-  { id: 3, title: "Image 3", imgSrc: "./images/img3.png" },
-  { id: 4, title: "Image 4", imgSrc: "./images/img4.png" },
-  { id: 5, title: "Image 5", imgSrc: "./images/img5.png" },
-  { id: 6, title: "Image 6", imgSrc: "./images/img6.png" },
-];
-
 const GalleryReveal = () => {
-  const [activeData, setActiveData] = useState(data[0]);
+  const [activeData, setActiveData] = useState(galleryData[0]);
   const tl = useRef(null);
   const revealerRef = useRef(null);
 
@@ -23,9 +14,29 @@ const GalleryReveal = () => {
     const ctx = gsap.context(() => {
       tl.current = gsap
         .timeline({ defaults: { ease: "power4.inOut" } })
-        .to(".revealer", {
-          yPercent: 0,
+        .to(revealerRef.current, {
+          top: "0%",
           duration: 1.5,
+        })
+        .to(".revealer .img", {
+          clipPath: "polygon(0 0,100% 0, 100% 100%,0 100%)",
+        });
+    }, revealerRef);
+
+    return () => ctx.revert();
+  };
+
+  const handleClose = () => {
+    const ctx = gsap.context(() => {
+      tl.current = gsap
+        .timeline({ defaults: { ease: "power4.inOut" } })
+        .to(".revealer .img", {
+          clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+          duration: 1.5,
+        })
+        .to(revealerRef.current, {
+          top: "100%",
+          duration: 3,
         });
     }, revealerRef);
 
@@ -52,12 +63,12 @@ const GalleryReveal = () => {
       </div>
       <div className="revealer" ref={revealerRef}>
         <div className="name">{activeData.title}</div>
-        <div className="revealer-img">
-          <div className="img">
-            <img src={activeData.imgSrc} alt={activeData.title} />
-          </div>
+        <div className="img">
+          <img src={activeData.imgSrc} alt={activeData.title} />
         </div>
-        <p className="close">Close</p>
+        <p className="close" onClick={handleClose}>
+          Close
+        </p>
       </div>
     </div>
   );
