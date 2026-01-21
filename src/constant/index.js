@@ -159,3 +159,29 @@ export const galleryData = [
   { id: 29, title: "Image 5", imgSrc: "./images/img5.png" },
   { id: 30, title: "Image 6", imgSrc: "./images/img6.png" },
 ];
+
+export const projectGallery = [
+  {
+    title: "C2 Montreal",
+    src: "c2montreal.png",
+    color: "#000000",
+  },
+
+  {
+    title: "Office Studio",
+    src: "officestudio.png",
+    color: "#8C8C8C",
+  },
+
+  {
+    title: "Locomotive",
+    src: "locomotive.png",
+    color: "#EFE8D3",
+  },
+
+  {
+    title: "Silencio",
+    src: "silencio.png",
+    color: "#706D63",
+  },
+];

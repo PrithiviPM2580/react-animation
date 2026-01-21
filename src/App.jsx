@@ -1,6 +1,7 @@
-import GalleryReveal from "./gallery-reveal/GalleryReveal";
+import MousemoveRevealGallery from "./mousemove-reveal-gallery/MousemoveRevealGallery";
+
 const App = () => {
-  return <GalleryReveal />;
+  return <MousemoveRevealGallery />;
 };
 
 export default App;
