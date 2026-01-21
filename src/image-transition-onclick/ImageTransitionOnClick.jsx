@@ -41,14 +41,13 @@ const ImageTransitionOnClick = () => {
           clipPath: "polygon(0 0,100% 0,100% 100%,0 100%)",
           duration: 1.5,
         })
-        .from(
-          ".text-transition .text p",
-          {
-            y: 100,
-            duration: 1,
-          },
-          "<",
-        );
+        .set(".text-transition .text p", {
+          y: -100,
+        })
+        .to(".text-transition .text p", {
+          y: 0,
+          duration: 1,
+        });
     }, containerRef);
 
     return () => ctx.revert();

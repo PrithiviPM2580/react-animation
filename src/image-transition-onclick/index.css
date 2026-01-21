@@ -131,6 +131,7 @@ img {
   height: max-content;
   line-height: 1.1;
   overflow: hidden;
+  background-color: red;
 }
 
 .text-transition .text p {
