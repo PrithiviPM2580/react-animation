@@ -1,6 +1,6 @@
-import ImageTransitionOnClick from "./image-transition-onclick/ImageTransitionOnClick";
+import GalleryReveal from "./gallery-reveal/GalleryReveal";
 const App = () => {
-  return <ImageTransitionOnClick />;
+  return <GalleryReveal />;
 };
 
 export default App;
