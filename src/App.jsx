@@ -1,7 +1,6 @@
-import MousemoveRevealGallery from "./mousemove-reveal-gallery/MousemoveRevealGallery";
-
+import SliderOnclickTextReveal from "./slider-onclick-text-reveal/SliderOnclickTextReveal";
 const App = () => {
-  return <MousemoveRevealGallery />;
+  return <SliderOnclickTextReveal />;
 };
 
 export default App;
