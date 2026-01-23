@@ -1,6 +1,7 @@
-import SliderOnclickTextReveal from "./slider-onclick-text-reveal/SliderOnclickTextReveal";
+import ScrollImageGrow from "./scroll-image-grow/ScrollImageGrow";
+
 const App = () => {
-  return <SliderOnclickTextReveal />;
+  return <ScrollImageGrow />;
 };
 
 export default App;

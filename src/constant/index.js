@@ -212,3 +212,31 @@ export const titles = [
     ["", "s", "h", "", "a", "d", "e"],
   ],
 ];
+
+export const scrollGrow = [
+  {
+    title: "Innovation",
+    img: "./images/img1.png",
+    desc: "Transforming ideas into reality through cutting-edge technology and creative solutions.",
+  },
+  {
+    title: "Design",
+    img: "./images/img2.png",
+    desc: "Creating beautiful and intuitive user experiences that inspire and engage.",
+  },
+  {
+    title: "Development",
+    img: "./images/img3.png",
+    desc: "Building robust and scalable applications with clean, maintainable code.",
+  },
+  {
+    title: "Strategy",
+    img: "./images/img4.png",
+    desc: "Planning and executing comprehensive approaches to achieve business goals.",
+  },
+  {
+    title: "Growth",
+    img: "./images/img5.png",
+    desc: "Scaling businesses through data-driven insights and continuous improvement.",
+  },
+];
