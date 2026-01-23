@@ -1,7 +1,7 @@
-import ScrollImageGrow from "./scroll-image-grow/ScrollImageGrow";
+import PixelTransitionEffect from "./pixel-transition-effect/PixelTransitionEffect";
 
 const App = () => {
-  return <ScrollImageGrow />;
+  return <PixelTransitionEffect />;
 };
 
 export default App;

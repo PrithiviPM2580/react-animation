@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 40px 10px;
+  box-sizing: border-box;
+  z-index: 4;
+  top: 0;
+}
+
+.header .burger {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.header .burger::before,
+.header .burger::after {
+  display: block;
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.header .burger::after {
+  top: -5px;
+}
+
+.header .burger::before {
+  top: 5px;
+}
+
+.header .burgerActive::after {
+  transform: rotate(45deg);
+  top: -1px;
+}
+
+.header .burgerActive::before {
+  transform: rotate(-45deg);
+  top: 0px;
+}
+
+.header {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 4;
+  top: 0;
+  padding: 40px;
+  .burger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    &::before,
+    &::after {
+      display: block;
+      content: "";
+      width: 30px;
+      height: 2px;
+      background-color: black;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    &::after {
+      top: -5px;
+    }
+
+    &::before {
+      top: 5px;
+    }
+  }
+  .burgerActive {
+    &::after {
+      transform: rotate(45deg);
+      top: -1px;
+    }
+    &::before {
+      transform: rotate(-45deg);
+      top: 0px;
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  width: 100%;
+  z-index: 3;
+  p {
+    font-size: 5vw;
+    margin: 5px;
+  }
+}
+
+.pixelBackground {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  flex-direction: column;
+  .row {
+    width: 100%;
+    height: 5vw;
+    display: flex;
+
+    .block {
+      width: 5vw;
+      height: 100%;
+      background-color: #ff6a00;
+    }
+  }
+}
+
+/* .column {
+    width: 5vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .block {
+      width: 100%;
+      height: 5vw;
+      background-color: #ff6a00;
+    }
+  } */
