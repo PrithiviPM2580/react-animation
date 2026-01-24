@@ -1,7 +1,7 @@
-import PageTransitionEffect from "./page-transition-effect/second-page-transition/PageTransitionEffect";
+import ActiveImageShown from "./active-image-shown/ActiveImageShown";
 
 const App = () => {
-  return <PageTransitionEffect />;
+  return <ActiveImageShown />;
 };
 
 export default App;
