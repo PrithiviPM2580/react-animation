@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100svh;
+  font-family: monospace;
+  overflow: hidden;
+}
+
+.page {
+  height: 100svh;
+  width: 100%;
+  padding: 4em 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.page > div {
+  display: flex;
+  gap: 4em;
+}
+
+.inner {
+  background-color: black;
+  .page {
+    background-color: white;
+  }
+  .slide {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+  }
+}
+
+.header {
+  width: 100%;
+  padding: 1em 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2em;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}

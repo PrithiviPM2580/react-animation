@@ -1,7 +1,7 @@
-import StickyCursor from "./sticky-cursor/StickyCursor";
+import PageTransitionEffect from "./page-transition-effect/PageTransitionEffect";
 
 const App = () => {
-  return <StickyCursor />;
+  return <PageTransitionEffect />;
 };
 
 export default App;
