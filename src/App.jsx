@@ -1,4 +1,4 @@
-import PageTransitionEffect from "./page-transition-effect/PageTransitionEffect";
+import PageTransitionEffect from "./page-transition-effect/first-page-transition/PageTransitionEffect";
 
 const App = () => {
   return <PageTransitionEffect />;

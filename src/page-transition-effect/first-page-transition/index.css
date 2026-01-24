@@ -21,11 +21,6 @@ body {
   gap: 2em;
 }
 
-.page > div {
-  display: flex;
-  gap: 4em;
-}
-
 .inner {
   background-color: black;
   .page {
@@ -54,4 +49,8 @@ body {
 a {
   text-decoration: none;
   color: #000;
+}
+
+p {
+  margin-bottom: 1em;
 }
