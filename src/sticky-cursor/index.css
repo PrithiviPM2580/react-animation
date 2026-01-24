@@ -33,15 +33,29 @@ main {
     gap: 8px;
     flex-direction: column;
     padding: 30px;
+    cursor: pointer;
     pointer-events: none;
     &::before,
     &::after {
-      display: block;
       content: "";
+      display: block;
       width: 30px;
       height: 2px;
       mix-blend-mode: difference;
       background-color: white;
+    }
+
+    .bounds {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      pointer-events: all;
+
+      &:hover {
+        transform: scale(3);
+      }
     }
   }
 }
