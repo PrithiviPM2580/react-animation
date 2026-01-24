@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./index.css";
 
 const TOTAL_IMAGES = 6;
@@ -8,11 +8,14 @@ export default function ActiveImageShown() {
   const carouselRef = useRef(null);
   const itemsRef = useRef([]);
   const activeImgRef = useRef(null);
+  const imgCacheRef = useRef({}); // Cache image sources
 
   const currentX = useRef(0);
   const targetX = useRef(0);
   const lastActiveIndex = useRef(-1);
   const itemWidth = useRef(0);
+  const animationFrameId = useRef(null);
+  const isAnimating = useRef(false);
 
   // Lerp helper
   const lerp = (start, end, t) => start * (1 - t) + end * t;
@@ -24,19 +27,38 @@ export default function ActiveImageShown() {
     // Measure item width once
     itemWidth.current = itemsRef.current[0]?.offsetWidth || 0;
 
+    // Cache image sources
+    itemsRef.current.forEach((item, i) => {
+      const img = item?.querySelector("img");
+      if (img) {
+        imgCacheRef.current[i] = img.src;
+      }
+    });
+
+    // Throttled wheel handler
+    let wheelTimeout;
     const onWheel = (e) => {
       targetX.current += e.deltaY;
-
       const maxScroll = carousel.scrollWidth - window.innerWidth;
-
       targetX.current = Math.max(0, Math.min(targetX.current, maxScroll));
+
+      // Start animation if not already running
+      if (!isAnimating.current) {
+        isAnimating.current = true;
+        animate();
+      }
+
+      // Debounce to stop animation after scrolling ends
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        isAnimating.current = false;
+      }, 150);
     };
 
     window.addEventListener("wheel", onWheel, { passive: true });
 
     const animate = () => {
       currentX.current = lerp(currentX.current, targetX.current, 0.1);
-
       carousel.style.transform = `translate3d(${-currentX.current}px, 0, 0)`;
 
       const index = Math.round(currentX.current / itemWidth.current);
@@ -49,18 +71,22 @@ export default function ActiveImageShown() {
         const item = itemsRef.current[index];
         item.classList.add("active");
 
-        activeImgRef.current.src = item.querySelector("img").src;
-
+        // Use cached image source
+        activeImgRef.current.src = imgCacheRef.current[index];
         lastActiveIndex.current = index;
       }
 
-      requestAnimationFrame(animate);
+      if (isAnimating.current) {
+        animationFrameId.current = requestAnimationFrame(animate);
+      }
     };
-
-    animate();
 
     return () => {
       window.removeEventListener("wheel", onWheel);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+      clearTimeout(wheelTimeout);
     };
   }, []);
 
