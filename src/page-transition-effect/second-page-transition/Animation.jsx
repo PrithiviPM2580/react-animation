@@ -26,8 +26,21 @@ const Animation = ({ children }) => {
     }),
   };
 
+  const overlay = {
+    initial: {
+      opacity: 0.5,
+    },
+    enter: {
+      opacity: 0,
+    },
+    exit: {
+      opacity: 0.5,
+    },
+  };
+
   return (
     <div className="page stairs">
+      <motion.div {...anim(overlay)} className="overlay" />
       <div className="transition-container">
         {[...Array(noOfColumns)].map((_, i) => (
           <motion.div {...anim(expand, noOfColumns - i)} key={i}></motion.div>
