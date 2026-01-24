@@ -1,7 +1,7 @@
-import PixelTransitionEffect from "./pixel-transition-effect/PixelTransitionEffect";
+import StickyCursor from "./sticky-cursor/StickyCursor";
 
 const App = () => {
-  return <PixelTransitionEffect />;
+  return <StickyCursor />;
 };
 
 export default App;
