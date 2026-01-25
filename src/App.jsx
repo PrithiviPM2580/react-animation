@@ -1,7 +1,6 @@
-import ActiveImageShown from "./active-image-shown/ActiveImageShown";
-
+import SliderImageOnScroll from "./slider-images-on-scroll/SliderImageOnScroll";
 const App = () => {
-  return <ActiveImageShown />;
+  return <SliderImageOnScroll />;
 };
 
 export default App;
