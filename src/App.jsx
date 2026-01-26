@@ -1,6 +1,6 @@
-import SliderImageOnScroll from "./slider-images-on-scroll/SliderImageOnScroll";
+import TextRevealOpacity from "./text-reveal-opacity/word/TextRevealOpacity";
 const App = () => {
-  return <SliderImageOnScroll />;
+  return <TextRevealOpacity />;
 };
 
 export default App;
