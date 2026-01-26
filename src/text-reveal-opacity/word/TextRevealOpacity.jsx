@@ -14,7 +14,6 @@ const TextRevealOpacity = () => {
     offset: ["start 0.9", "start 0.25"],
   });
 
-  const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
   return (
     <main>
       <div style={{ height: "100svh" }} />
@@ -43,8 +42,9 @@ export default TextRevealOpacity;
 const Word = ({ children, range, scrollYProgress }) => {
   const opacity = useTransform(scrollYProgress, range, [0, 1]);
   return (
-    <motion.span style={{ opacity: opacity }} className="word">
-      {children}
-    </motion.span>
+    <span className="word">
+      <span className="shadow">{children}</span>
+      <motion.span style={{ opacity }}>{children}</motion.span>
+    </span>
   );
 };
