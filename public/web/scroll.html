@@ -6,164 +6,207 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap");
-
       * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Special Gothic Condensed One", sans-serif;
-      }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100svh;
+  font-family: monospace;
+  overflow: hidden;
+}
 
-      html,
-      body {
-        height: 100svh;
-        width: 100%;
-        overflow: hidden;
-      }
+nav,
+footer {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  padding: 1em 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1em 2em;
-      }
+nav {
+  top: 0;
+}
 
-      .logo {
-        font-size: 1.2rem;
-        cursor: pointer;
-      }
+footer {
+  bottom: 0;
+}
 
-      .navs {
-        display: flex;
-        gap: 1.5em;
-      }
-      .navs p {
-        font-size: 1.2rem;
-        cursor: pointer;
-      }
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-      .container h1 {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 10rem;
-      }
+.slider-wrapper {
+  width: max-content;
+  padding: 0 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
 
-      .loader {
-        position: fixed;
-        width: 100%;
-        height: 100svh;
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-        will-change: clip-path;
-      }
+.slide {
+  width: 500px;
+  height: 500px;
+  background-color: gray;
+}
 
-      .loader .img {
-        position: absolute;
-        width: 100%;
-        height: 100svh;
-        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-        will-change: clip-path;
-      }
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+.marker-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  height: 100svh;
+}
 
-      .overlay {
-        position: fixed;
-        width: 100%;
-        height: 100svh;
-        background-color: #0f0f0f;
-        color: #fff;
-        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        will-change: clip-path;
-      }
+.marker {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background-color: #000;
+}
 
-      button {
-        padding: 0.7em 2em;
-        font-size: 1rem;
-        cursor: pointer;
-        border-radius: 20px;
-        outline: none;
-        border: none;
-      }
+.marker::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 100%;
+}
+
+.active-slide {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  font-size: 15px;
+}
+
     </style>
   </head>
   <body>
-    <div class="container">
-      <nav>
-        <div class="logo">PPM</div>
-        <div class="navs">
-          <p>Home</p>
-          <p>Shop</p>
-          <p>Cart</p>
-        </div>
-      </nav>
-      <h1>Welcome to PPM</h1>
-      <div class="loader">
-        <div class="img"><img src="../images/img1.png" alt="" /></div>
-        <div class="img"><img src="../images/img2.png" alt="" /></div>
-        <div class="img"><img src="../images/img3.png" alt="" /></div>
-        <div class="img"><img src="../images/img4.png" alt="" /></div>
-        <div class="img"><img src="../images/img5.png" alt="" /></div>
-        <div class="img"><img src="../images/img6.png" alt="" /></div>
+    <nav>
+      <div class="logo">PPM</div>
+      <div class="menu">Menu</div>
+    </nav>
+    <div class="marker-wrapper">
+      <div class="marker">
+        <div class="grab"></div>
       </div>
+      <div class="active-slide">1/10</div>
     </div>
 
-    <div class="overlay">
-      <button>Click Anywhere</button>
-    </div>
+    <div class="slider">
+      <div class="slider-wrapper">
+        <div class="slide">
+          <img src="../images/img1.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img2.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img3.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img4.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img5.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img6.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img1.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img2.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img3.png" alt="" />
+        </div>
+        <div class="slide">
+          <img src="../images/img4.png" alt="" />
+        </div>
+      </div>
+      <footer>
+        <p>Elite web design</p>
+        <p>PPM 2026 &copy;</p>
+      </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="./script.js">
-            document.addEventListener("DOMContentLoaded", () => {
-        const button = document.querySelector("button");
-        const overlay = document.querySelector(".overlay");
-        const images = document.querySelectorAll(".img");
-        const loader = document.querySelector(".loader");
+      document.addEventListener("DOMContentLoaded", function () {
+  let target = 0;
+  let current = 0;
+  let ease = 0.075;
 
-        const tl = gsap.timeline({
-          paused: true,
-          defaults: { ease: "power4.inOut" },
-        });
+  const slider = document.querySelector(".slider");
+  const sliderWrapper = document.querySelector(".slider-wrapper");
+  const markerWrapper = document.querySelector(".marker-wrapper");
+  const activeSlide = document.querySelector(".active-slide");
 
-        tl.to(overlay, {
-          clipPath: "polygon(0% 0%,100% 0%,100% 0%,0% 0%)",
-          duration: 2,
-        })
-          .to(
-            images,
-            {
-              clipPath: "polygon(0% 100%,100% 100%,100% 0%,0% 0%)",
-              duration: 1,
-              stagger: { amount: 1.5 },
-            },
-            "-=1.4",
-          )
-          .to(
-            loader,
-            { clipPath: "polygon(0% 0%,100% 0%,100% 0%,0% 0%)", duration: 1 },
-            "-=0.7",
-          );
+  let maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
 
-        button.addEventListener("click", () => {
-          tl.restart(); // reuse same timeline
-        });
-      });
+  function lerp(start, end, t) {
+    return start * (1 - t) + end * t;
+  }
+
+  const x = gsap.quickTo(sliderWrapper, "x");
+  const marker = gsap.quickTo(markerWrapper, "x");
+
+  function updateActiveSliderNumber(markerMove, markerMaxMove) {
+    const partWidth = markerMaxMove / 10;
+    let currentPart = Math.round((markerMove - 70) / partWidth) + 1;
+    currentPart = Math.min(10, currentPart);
+    activeSlide.textContent = `${currentPart}/10`;
+  }
+
+  function update() {
+    current = lerp(current, target, ease);
+    x(-current);
+
+    let moveRation = current / maxScroll;
+    let markerMaxMove = window.innerWidth - markerWrapper.offsetWidth - 170;
+    let markerMove = 70 + moveRation * markerMaxMove;
+    marker(markerMove);
+    updateActiveSliderNumber(markerMove, markerMaxMove);
+
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener("resize", function () {
+    maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+  });
+
+  window.addEventListener("wheel", (e) => {
+    target += e.deltaY;
+
+    target = Math.max(0, target);
+    target = Math.min(maxScroll, target);
+  });
+
+  update();
+});
+
     </script>
   </body>
 </html>

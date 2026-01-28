@@ -1,6 +1,6 @@
-import TextRevealOpacity from "./text-reveal-opacity/word/TextRevealOpacity";
+import HorizonatlScrollSlider from "./horizontal-scroll-slider/HorizonatlScrollSlider";
 const App = () => {
-  return <TextRevealOpacity />;
+  return <HorizonatlScrollSlider />;
 };
 
 export default App;
