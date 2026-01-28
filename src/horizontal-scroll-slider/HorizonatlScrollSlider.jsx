@@ -10,10 +10,14 @@ const HorizonatlScrollSlider = () => {
   const sliderRef = useRef(null);
   const maxScrollRef = useRef(0);
   const horizontaLScrollXRef = useRef(null);
+  const markerRef = useRef(null);
+  const [activeSlide, setActiveSlide] = useRef(1);
 
   const lerp = (start, end, amt) => {
     return (1 - amt) * start + amt * end;
   };
+
+  function updateActiveSliderNumber(markerMove, markerMaxMove) {}
 
   function update() {
     currentX.current = lerp(currentX.current, targetX.current, 0.1);
@@ -21,6 +25,11 @@ const HorizonatlScrollSlider = () => {
       horizontaLScrollXRef.current(-currentX.current);
     }
 
+    let moveRation = currentX.current / maxScrollRef.current;
+    let markerMaxMove = window.innerWidth - markerRef.current.offsetWidth - 170;
+    let markerMove = 70 + moveRation * markerMaxMove;
+    markerRef.current = gsap.quickTo(markerRef.current, "x");
+    updateActiveSliderNumber(markerMove, markerMaxMove);
     requestAnimationFrame(update);
   }
 
@@ -61,7 +70,7 @@ const HorizonatlScrollSlider = () => {
         <div>Logo</div>
         <div>Menu</div>
       </nav>
-      <div className="marker-wrapper">
+      <div className="marker-wrapper" ref={markerRef}>
         <div className="marker">
           <div className="grab"></div>
         </div>
