@@ -33,14 +33,14 @@ footer {
 
 .slider {
   width: 100%;
-  height: 100%;
+  height: 100svh;
   overflow: hidden;
 }
 
 .slider-wrapper {
   width: max-content;
-  height: 100%;
   padding: 0 150px;
+  height: 100%;
   display: flex;
   align-items: center;
   gap: 100px;
@@ -56,4 +56,52 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.marker-wrapper {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: max-content;
+  height: 100svh;
+  z-index: -1;
+}
+
+.marker {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background-color: #000;
+}
+
+.marker::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 60px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 100%;
+}
+
+.marker::before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 50px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 100%;
+}
+
+.active-slide {
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  font-size: 15px;
 }
