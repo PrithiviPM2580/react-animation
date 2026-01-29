@@ -1,7 +1,7 @@
-import AwwardsNav from "./awwards-nav/AwwardsNav";
+import ImageSlider from "./image-slider/ImageSlider";
 
 const App = () => {
-  return <AwwardsNav />;
+  return <ImageSlider />;
 };
 
 export default App;
