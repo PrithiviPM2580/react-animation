@@ -2,10 +2,12 @@ import { useGSAP } from "@gsap/react";
 import "./index.css";
 import { useRef } from "react";
 import gsap from "gsap";
+import { useState } from "react";
 
 const AwwardsNav = () => {
   const containerRef = useRef(null);
   const tl = useRef(null);
+  const [menuOpen, setMenuOpen] = useState("☰");
 
   useGSAP(
     () => {
@@ -17,9 +19,7 @@ const AwwardsNav = () => {
             height: "80px",
           },
           {
-            height: "50vh",
-            duration: 0.5,
-            ease: "power2.inOut",
+            height: "40vh",
           },
           "<",
         )
@@ -28,7 +28,6 @@ const AwwardsNav = () => {
           {
             opacity: 0,
             pointerEvents: "none",
-            duration: 0.5,
           },
           "<",
         )
@@ -36,9 +35,8 @@ const AwwardsNav = () => {
           "#btn-1",
           {
             width: "100%",
-            duration: 0.5,
           },
-          "<",
+          "<0.2",
         );
     },
     { scope: containerRef },
@@ -46,11 +44,43 @@ const AwwardsNav = () => {
 
   const handleScaleClick = () => {
     tl.current.reversed() ? tl.current.play() : tl.current.reverse();
+    setMenuOpen(menuOpen === "☰" ? "✕" : "☰");
   };
   return (
     <div className="container" ref={containerRef}>
       <div className="nav">
-        <div className="navs"></div>
+        <div className="navs">
+          <div className="nav-part">
+            <ul>
+              <li>Awwards</li>
+              <li>Inspiration</li>
+              <li>Directory</li>
+              <li>Market</li>
+            </ul>
+          </div>
+          <div className="nav-parts">
+            <div className="part-1">
+              <p>Winners</p>
+              <p>Site of the day</p>
+              <p>Nominees</p>
+            </div>
+            <div className="part-2">
+              <p>Colections</p>
+              <p>Elements</p>
+              Resources
+            </div>
+            <div className="part-3">
+              <p>Professionals</p>
+              <p>Agencies</p>
+              <p>Freelencers</p>
+            </div>
+            <div className="part-4">
+              <p>Jobs</p>
+              <p>New Events</p>
+              <p>Products</p>
+            </div>
+          </div>
+        </div>
         <div className="btns">
           {["More", "Home", "Nominees", "Directory", "Collection"].map(
             (btnText, index) => {
@@ -62,7 +92,7 @@ const AwwardsNav = () => {
                   onClick={index === 0 ? handleScaleClick : undefined}
                 >
                   {" "}
-                  {index === 0 ? <span>&#9776;</span> : null}
+                  {index === 0 ? <span>{menuOpen}</span> : null}
                   {btnText}
                 </button>
               );
