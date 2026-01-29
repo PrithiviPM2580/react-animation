@@ -1,6 +1,7 @@
-import HorizonatlScrollSlider from "./horizontal-scroll-slider/HorizonatlScrollSlider";
+import Practice from "./practice/Practice";
+
 const App = () => {
-  return <HorizonatlScrollSlider />;
+  return <Practice />;
 };
 
 export default App;
