@@ -1,7 +1,7 @@
-import Practice from "./practice/Practice";
+import AwwardsNav from "./awwards-nav/AwwardsNav";
 
 const App = () => {
-  return <Practice />;
+  return <AwwardsNav />;
 };
 
 export default App;

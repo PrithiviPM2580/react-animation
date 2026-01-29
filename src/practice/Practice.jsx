@@ -7,28 +7,54 @@ const HorizontalScrollSlider = () => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
   const targetX = useRef(0);
+  const markerRef = useRef(null);
 
   useGSAP(
     () => {
       const slider = sliderRef.current;
+      const markerWrapper = markerRef.current;
+      const activeSlide = markerWrapper.querySelector(".active-slide");
 
-      // calculate max scroll once
+      const totalSlides = slider.children[0].children.length; // 10
       let maxScroll = slider.offsetWidth - window.innerWidth;
-
       const clamp = gsap.utils.clamp(0, maxScroll);
 
-      const moveX = gsap.quickTo(slider, "x", {
+      const moveSlider = gsap.quickTo(slider, "x", {
         duration: 0.8,
         ease: "power4.out",
+        overwrite: true,
       });
+
+      const moveMarker = gsap.quickTo(markerWrapper, "x", {
+        duration: 0.8,
+        ease: "power4.out",
+        overwrite: true,
+      });
+
+      let markerMaxMove =
+        markerWrapper.offsetParent.offsetWidth - markerWrapper.offsetWidth;
 
       const handleWheel = (e) => {
         targetX.current = clamp(targetX.current + e.deltaY);
-        moveX(-targetX.current);
+        moveSlider(-targetX.current);
+
+        // Move marker-wrapper proportionally
+        const progress = maxScroll === 0 ? 0 : targetX.current / maxScroll;
+        moveMarker(progress * markerMaxMove);
+
+        // Update active slide number
+        const slideWidth = slider.offsetWidth / totalSlides;
+        const activeIndex = Math.min(
+          totalSlides,
+          Math.floor(targetX.current / slideWidth) + 1,
+        );
+        activeSlide.textContent = `${activeIndex} / ${totalSlides}`;
       };
 
       const handleResize = () => {
         maxScroll = slider.offsetWidth - window.innerWidth;
+        markerMaxMove =
+          markerWrapper.offsetParent.offsetWidth - markerWrapper.offsetWidth;
       };
 
       window.addEventListener("wheel", handleWheel, { passive: true });
@@ -49,7 +75,7 @@ const HorizontalScrollSlider = () => {
         <div>Menu</div>
       </nav>
 
-      <div className="marker-wrapper">
+      <div className="marker-wrapper" ref={markerRef}>
         <div className="marker">
           <div className="grab"></div>
         </div>
