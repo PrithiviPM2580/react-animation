@@ -23,9 +23,11 @@ body {
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
+  transform-origin: bottom;
   background-color: #343638;
   padding: 1em 1em;
   border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 .btns {
