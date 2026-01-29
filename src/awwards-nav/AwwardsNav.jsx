@@ -9,16 +9,43 @@ const AwwardsNav = () => {
 
   useGSAP(
     () => {
-      tl.current = gsap.timeline({ paused: true }).to(".nav", {
-        height: "50vh",
-      });
+      tl.current = gsap
+        .timeline({ paused: true, reversed: true })
+        .fromTo(
+          ".nav",
+          {
+            height: "80px",
+          },
+          {
+            height: "50vh",
+            duration: 0.5,
+            ease: "power2.inOut",
+          },
+          "<",
+        )
+        .to(
+          "#btn-2, #btn-3, #btn-4, #btn-5",
+          {
+            opacity: 0,
+            pointerEvents: "none",
+            duration: 0.5,
+          },
+          "<",
+        )
+        .to(
+          "#btn-1",
+          {
+            width: "100%",
+            duration: 0.5,
+          },
+          "<",
+        );
     },
     { scope: containerRef },
   );
 
   const handleScaleClick = () => {
-    console.log("clicked");
-    tl.current.reversed(!tl.current.reversed());
+    tl.current.reversed() ? tl.current.play() : tl.current.reverse();
   };
   return (
     <div className="container" ref={containerRef}>

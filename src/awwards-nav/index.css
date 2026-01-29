@@ -19,7 +19,7 @@ body {
 }
 
 .nav {
-  position: fixed;
+  position: absolute;
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
@@ -27,12 +27,18 @@ body {
   background-color: #343638;
   padding: 1em 1em;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .btns {
   display: flex;
   gap: 0.5em;
+  width: 100%;
 }
 
 .btn {
@@ -44,7 +50,7 @@ body {
   background-color: transparent;
   border: 0.5px solid rgba(255, 255, 255, 0.3);
   color: rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .btn:hover {
@@ -57,4 +63,6 @@ body {
   display: flex;
   gap: 10px;
   border: none;
+  flex: 0 0 auto;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
