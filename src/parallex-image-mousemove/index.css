@@ -15,13 +15,6 @@ body {
   padding: 0;
 }
 
-.container {
-  width: 100%;
-  height: 100svh;
-  position: relative;
-  overflow: hidden;
-}
-
 .header {
   position: absolute;
   top: 50%;
@@ -52,16 +45,12 @@ button {
 .gallery {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 0;
 }
 
 .item {
-  width: 100%;
-  height: 100%;
-  will-change: transform;
+  position: absolute;
+  width: 200px;
+  height: 275px;
   overflow: hidden;
 }
 img {
