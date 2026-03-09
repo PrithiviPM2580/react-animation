@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  position: relative;
+  height: 100svh;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+#slide-1 {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100svh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.slide-number {
+  position: absolute;
+  top: 55%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 0.25em;
+}
+
+.postfix span {
+  padding: 0 0.25em;
+}
+
+.slide-name {
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.slide-year {
+  position: absolute;
+  top: 55%;
+  right: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.slide-name,
+.slide-number,
+.slide-year {
+  color: #fff;
+  font-size: 18px;
+  line-height: 30px;
+  clip-path: polygon(0 0, 100% 0, 100% 30px, 0 30px);
+}
+
+.prefix,
+.names,
+.years {
+  position: relative;
+  top: 0;
+}

@@ -1,7 +1,7 @@
-import ParallexImageMouseMove from "./parallex-image-mousemove/ParallexImageMouseMove";
+import ImageSliderClipPath from "./image-slider-clip-path/ImageSliderClipPath";
 
 const App = () => {
-  return <ParallexImageMouseMove />;
+  return <ImageSliderClipPath />;
 };
 
 export default App;

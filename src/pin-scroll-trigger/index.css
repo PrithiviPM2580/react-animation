@@ -1,0 +1,88 @@
+:root {
+  --primary: #bdbdbd;
+  --secondary: #181818;
+  --text-blg: 32rem;
+  --text-h1: 8rem;
+  --text-h2: 3.2rem;
+  --text-span: 1.6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: calc(100vw / 1920 * 10);
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+main {
+  background-color: var(--secondary);
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: 1;
+}
+h2 {
+  font-size: var(--text-h2);
+}
+p,
+span {
+  font-size: var(--text-span);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.intro {
+  height: 50vh;
+  background-color: var(--primary);
+  padding: 6.4rem;
+  border-bottom: 1px solid var(--secondary);
+}
+
+.intro_wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: inherit;
+}
+
+.intro-wrapper h1,
+.intro-wrapper p {
+  flex: 1;
+}
+
+.services {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  background-color: var(--primary);
+}
+
+.services_col {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 12.8rem 6.4rem;
+}
