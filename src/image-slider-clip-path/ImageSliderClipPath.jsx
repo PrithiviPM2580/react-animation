@@ -2,73 +2,48 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import "./style.css";
 import { useRef } from "react";
+import { useState } from "react";
 
 const ImageSliderClipPath = () => {
   const sliderContentRef = useRef(null);
   const slides = useRef([]);
-  const currentIndex = useRef(0);
-  const isAnimating = useRef(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  function handleWheelScroll(e) {
-    e.preventDefault();
-    if (isAnimating.current) return;
+  const handleWheel = (e) => {
+    if (isAnimating) return;
 
     const direction = e.deltaY > 0 ? 1 : -1;
-    const nextIndex = currentIndex.current + direction;
-
+    const nextIndex = currentIndex + direction;
     if (nextIndex < 0 || nextIndex >= slides.current.length) return;
-
-    isAnimating.current = true;
 
     const tl = gsap.timeline({
       defaults: { ease: "power4.inOut" },
-      onComplete: () => {
-        currentIndex.current = nextIndex;
-        isAnimating.current = false;
-      },
+      onComplete: () => setIsAnimating(false),
     });
 
     tl.to(".prefix, .names, .years", {
       y: `+=${direction > 0 ? -30 : 30}`,
-      duration: 1,
+      duration: 2,
     });
 
-    slides.current.forEach((slide, index) => {
-      tl.to(slide, {
-        scale: 1,
-        top: "0%",
-        duration: 2,
-        ease: "power3.inOut",
-      })
-        .to(
-          slide,
-          {
-            clipPath:
-              index === nextIndex
-                ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-                : "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-            duration: 1.2,
-          },
-          "<",
-        )
-        .to(
-          slide,
-          {
-            clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-            duration: 1.2,
-          },
-          "<",
-        );
-    });
-  }
+    setIsAnimating(true);
+  };
 
   useGSAP(
     () => {
-      window.addEventListener("wheel", handleWheelScroll, { passive: false });
+      gsap.set(slides.current, {
+        scale: (i) => (i === 0 ? 1 : 2),
+      });
+
+      window.addEventListener("wheel", handleWheel);
+
+      return () => {
+        window.removeEventListener("wheel", handleWheel);
+      };
     },
     { scope: sliderContentRef },
   );
-
   return (
     <>
       <div className="slider-content" ref={sliderContentRef}>

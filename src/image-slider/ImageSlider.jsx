@@ -37,20 +37,35 @@ const ImageSlider = () => {
       duration: 1,
     });
 
-    // IMAGE REVEAL (bottom → top)
-    tl.fromTo(
-      `#slide-${nextIndex + 1}`,
-      {
-        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      },
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        duration: 1.2,
-      },
-      "<",
-    );
+    // IMAGE REVEAL
+    if (direction > 0) {
+      // Scroll Down: new slide comes from bottom
+      tl.fromTo(
+        `#slide-${nextIndex + 1}`,
+        {
+          clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+        },
+        {
+          clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)",
+          duration: 1.2,
+        },
+        "<",
+      );
+    } else {
+      // Scroll Up: new slide comes from top
+      tl.fromTo(
+        `#slide-${nextIndex + 1}`,
+        {
+          clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)",
+        },
+        {
+          clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+          duration: 1.2,
+        },
+        "<",
+      );
+    }
   };
-
   useGSAP(
     () => {
       const onWheel = (e) => {
