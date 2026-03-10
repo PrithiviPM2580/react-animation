@@ -1,7 +1,7 @@
-import RevealImageOnScroll from "./reveal-image-on-scroll/RevealImageOnScroll";
+import HorizontalSccrollImageSlider from "./horizontal-scroll-image-slider/HorizontalSccrollImageSlider";
 
 const App = () => {
-  return <RevealImageOnScroll />;
+  return <HorizontalSccrollImageSlider />;
 };
 
 export default App;
