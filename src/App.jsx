@@ -1,8 +1,7 @@
-import ImageSliderClipPath from "./image-slider-clip-path/ImageSliderClipPath";
-import ImageSlider from "./image-slider/ImageSlider";
+import RevealImageOnScroll from "./reveal-image-on-scroll/RevealImageOnScroll";
 
 const App = () => {
-  return <ImageSlider />;
+  return <RevealImageOnScroll />;
 };
 
 export default App;
