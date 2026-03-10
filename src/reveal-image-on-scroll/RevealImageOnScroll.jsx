@@ -30,7 +30,7 @@ const RevealImageOnScroll = () => {
               start: "top 100%", // when top of image hits 100% of viewport
               end: "top 20%", // until top hits 20% of viewport
               scrub: true, // link animation to scroll
-              markers: true,
+              //   markers: true,
             },
           },
         );
