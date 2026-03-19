@@ -1,7 +1,7 @@
-import HorizontalSccrollImageSlider from "./horizontal-scroll-image-slider/HorizontalSccrollImageSlider";
+import MinimapScroll from "./minimap-scroll/MinimapScroll";
 
 const App = () => {
-  return <HorizontalSccrollImageSlider />;
+  return <MinimapScroll />;
 };
 
 export default App;
