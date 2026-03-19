@@ -1,6 +1,4 @@
-import React from "react";
-
-const Minimap = ({ images }) => {
+const Minimap = ({ images, thumbnailRefs }) => {
   return (
     <div className="minimap">
       <div className="preview">
@@ -9,6 +7,7 @@ const Minimap = ({ images }) => {
             key={index}
             className="img-thumbnail"
             style={{ left: img.offset }}
+            ref={(el) => (thumbnailRefs.current[index] = el)}
           >
             <img
               src={`/images/img${img.index}.png`}
