@@ -5,7 +5,7 @@ import Minimap from "./Minimap";
 import "./style.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,12 +32,14 @@ const MinimapScroll = () => {
           trigger: fullImage,
           start: "top center",
           end: "bottom center",
-          markers: true,
           onToggle: ({ isActive }) => {
             if (isActive) {
               // Deactivate previous active thumbnail
-              if (activeThumbnail && activeThumbnail !== thumbnail) {
-                gsap.to(activeThumbnail, {
+              if (
+                activeThumbnail.current &&
+                activeThumbnail.current !== thumbnail
+              ) {
+                gsap.to(activeThumbnail.current, {
                   opacity: 0.5,
                   scale: 1,
                   border: "none",
@@ -50,7 +52,7 @@ const MinimapScroll = () => {
                 border: "1px solid #fff",
               });
               activeThumbnail.current = thumbnail;
-            } else if (activeThumbnail === thumbnail) {
+            } else if (activeThumbnail.current === thumbnail) {
               gsap.to(thumbnail, {
                 opacity: 0.5,
                 scale: 1,
@@ -97,3 +99,90 @@ const MinimapScroll = () => {
 };
 
 export default MinimapScroll;
+
+// import { useGSAP } from "@gsap/react";
+// import SmoothScrolling from "../SmoothScrolling";
+// import Images from "./Images";
+// import Minimap from "./Minimap";
+// import "./style.css";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { useRef, useState, useEffect } from "react";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const TOTAL_IMAGES = 10;
+// const IMAGE_VARIANTS = 6;
+// const OFFSETS = [-15, -7.5, 0, 7.5, 15];
+
+// const MinimapScroll = () => {
+//   const thumbnailRefs = useRef([]);
+//   const fullImageRefs = useRef([]);
+//   const [activeIndex, setActiveIndex] = useState(-1);
+
+//   const images = Array.from({ length: TOTAL_IMAGES }).map((_, index) => ({
+//     index: (index % IMAGE_VARIANTS) + 1,
+//     offset: OFFSETS[Math.floor(Math.random() * OFFSETS.length)] + "px",
+//   }));
+
+//   useGSAP(
+//     () => {
+//       fullImageRefs.current.forEach((fullImage, index) => {
+//         ScrollTrigger.create({
+//           trigger: fullImage,
+//           start: "top center",
+//           end: "bottom center",
+//           onToggle: ({ isActive }) => {
+//             if (isActive) setActiveIndex(index);
+//           },
+//         });
+//       });
+//     },
+//     { dependencies: [] },
+//   );
+
+//   useEffect(() => {
+//     thumbnailRefs.current.forEach((thumb, index) => {
+//       if (!thumb) return;
+//       gsap.to(thumb, {
+//         opacity: index === activeIndex ? 1 : 0.5,
+//         scale: index === activeIndex ? 1.3 : 1,
+//         border: index === activeIndex ? "1px solid #fff" : "none",
+//         overwrite: "auto",
+//       });
+//     });
+//   }, [activeIndex]);
+
+//   return (
+//     <SmoothScrolling>
+//       <div className="container">
+//         <nav>
+//           <p>PPM</p>
+//           <button>Sign Up</button>
+//         </nav>
+//         <div className="section">
+//           <h1>
+//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque aut
+//             officiis ex architecto perferendis minima eaque autem et. Possimus
+//             consectetur nulla corporis excepturi dolor dignissimos sunt fugiat
+//             ducimus! Consequuntur, ut.
+//           </h1>
+//         </div>
+//         <div className="gallery">
+//           <Minimap images={images} thumbnailRefs={thumbnailRefs} />
+//           <Images images={images} fullImageRefs={fullImageRefs} />
+//         </div>
+//         <div className="section">
+//           <h1>
+//             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque aut
+//             officiis ex architecto perferendis minima eaque autem et. Possimus
+//             consectetur nulla corporis excepturi dolor dignissimos sunt fugiat
+//             ducimus! Consequuntur, ut.
+//           </h1>
+//         </div>
+//       </div>
+//     </SmoothScrolling>
+//   );
+// };
+
+// export default MinimapScroll;
