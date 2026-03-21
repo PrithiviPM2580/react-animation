@@ -22,6 +22,7 @@ img {
   width: 100%;
   height: 100svh;
   z-index: 2;
+  z-index: 10;
 }
 
 nav {
@@ -33,9 +34,50 @@ nav {
   justify-content: center;
   gap: 3em;
 }
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1em;
+  z-index: 10;
+}
+
+.container .col {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.col .item {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  background: gray;
+  overflow: hidden;
+}
+
+.col-1,
+.col-3,
+.col-5 {
+  top: 100%;
+}
+
+.col-1 .item,
+.col-3 .item,
+.col-5 .item {
+  top: 100%;
+}
+.col-2,
+.col-4 {
+  top: -100%;
+}
 
 .nav-item {
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .nav-item a {
@@ -59,15 +101,13 @@ nav {
   display: flex;
   align-items: center;
   color: #fff;
-  background-color: red;
 }
 .icon,
 .icon-2 {
   flex: 0.5;
   padding: 0 5em;
   font-size: 30px;
-  opacity: 0.5;
-  background-color: blue;
+  opacity: 0;
 }
 .icon-2 {
   text-align: right;
@@ -82,7 +122,7 @@ nav {
   flex: 2;
   text-align: center;
   font-size: 40px;
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .title p {
@@ -92,17 +132,17 @@ nav {
 
 footer {
   position: absolute;
-  bottom: 10%;
+  bottom: 0%;
   width: 100%;
 }
 
 .preview {
   position: absolute;
-  bottom: 2em;
+  bottom: 0.5em;
   right: 2em;
   display: flex;
   gap: 0.3em;
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .preview img {
@@ -113,7 +153,8 @@ footer {
 }
 
 .slide-num {
-  margin: 3em 0;
+  position: relative;
+  bottom: -2em;
   text-align: center;
   color: #fff;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -121,7 +162,48 @@ footer {
 
 .slide-num p {
   position: relative;
-  top: 30px;
+  bottom: -30px;
+}
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1em;
+}
+
+.container .col {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.col .item {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  background: gray;
+  overflow: hidden;
+}
+
+.col-1,
+.col-3,
+.col-5 {
+  top: 100%;
+}
+
+.col-1 .item,
+.col-3 .item,
+.col-5 .item {
+  top: 100%;
+}
+.col-2,
+.col-4 {
+  top: -100%;
 }
 
 @media (max-width: 900px) {
@@ -134,8 +216,21 @@ footer {
   .title {
     font-size: 30px;
   }
+
+  .slide-num {
+    text-align: left;
+    padding-left: 2em;
+    margin-bottom: 2.5em;
+  }
+
   .icon,
   .icon-2 {
     padding: 0 1em;
+    font-size: 16px;
+  }
+
+  .preview img {
+    width: 60px;
+    height: 40px;
   }
 }
