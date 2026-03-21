@@ -1,7 +1,7 @@
-import MinimapScroll from "./minimap-scroll/MinimapScroll";
+import LandingIntroAnimation from "./landing-intro-animation/LandingIntroAnimation";
 
 const App = () => {
-  return <MinimapScroll />;
+  return <LandingIntroAnimation />;
 };
 
 export default App;

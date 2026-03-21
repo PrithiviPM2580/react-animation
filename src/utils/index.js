@@ -6,3 +6,7 @@ export const getRandomColor = () => {
   }
   return color;
 };
+
+export const getRandomImage = () => {
+  return Math.floor(Math.random() * 5) + 1;
+};
