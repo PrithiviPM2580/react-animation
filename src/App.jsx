@@ -1,7 +1,8 @@
-import LandingIntroAnimation from "./landing-intro-animation/LandingIntroAnimation";
+import MenuRevealAnimation from "./menu-reveal-animation/MenuRevealAnimation";
 
+MenuRevealAnimation;
 const App = () => {
-  return <LandingIntroAnimation />;
+  return <MenuRevealAnimation />;
 };
 
 export default App;

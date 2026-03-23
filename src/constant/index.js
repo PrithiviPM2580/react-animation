@@ -240,3 +240,28 @@ export const scrollGrow = [
     desc: "Scaling businesses through data-driven insights and continuous improvement.",
   },
 ];
+
+export const NAV_SOCIALS = [
+  "Bluesky",
+  "Twitter",
+  "LinkedIn",
+  "GitHub",
+  "Instagram",
+];
+
+export const NAV_LEGAL = [
+  "Terms of Service",
+  "Privacy Policy",
+  "Cookie Policy",
+  "Accessibility Statement",
+];
+
+export const NAV_PRIMARY_LINKS = [
+  "Home",
+  "About",
+  "Services",
+  "Projects",
+  "Contact",
+];
+
+export const NAV_SECONDARY_LINKS = ["Blog", "Careers", "Press", "Support"];
